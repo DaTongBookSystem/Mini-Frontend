@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "Searchinput":"../../components/Searchinput/Searchinput",
+    "Tabs":"../../components/Tabs/Tabs"
+
+  },
+  "navigationBarTitleText": "图书列表",
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark"
+}
