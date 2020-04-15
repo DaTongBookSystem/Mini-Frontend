@@ -2,6 +2,8 @@
 let ajaxTime=0;
 
 const baseUrl = 'http://localhost:8002';
+
+
 export const request = (params, tokenNeeded = true) => {
   let header={...params.header};
   if(tokenNeeded) {
@@ -14,7 +16,7 @@ export const request = (params, tokenNeeded = true) => {
       header:header,
       url:baseUrl+params.url,
       success:(result)=>{
-          resolve(result.data.message);
+          resolve(result.data);
       },
       fail:(err)=>{
           reject(err);
