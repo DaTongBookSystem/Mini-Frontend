@@ -22,8 +22,8 @@
     wx:for="{{swiperList}}"
     wx:key="goods_id"
     >
-      <navigator url="{{item.navigator_url}}">
-      <image mode="widthFix" src="{{item.image_src}}">
+      <navigator url="{{item.linkTo}}">
+      <image mode="widthFix" src="{{item.imgUrl}}">
       </image>
       </navigator>
     </swiper-item>

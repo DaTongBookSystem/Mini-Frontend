@@ -16,7 +16,7 @@ export const request = (params, tokenNeeded = true) => {
       header:header,
       url:baseUrl+params.url,
       success:(result)=>{
-          resolve(result.data);
+          resolve(result.data.data);
       },
       fail:(err)=>{
           reject(err);

@@ -30,10 +30,11 @@ Page({
 
   //获取轮播图数据
   getSwiperList(){
-    request({url: "/home/swiperdata" })
+    request({url: "/home/list" })
     .then(result=>{
+      console.log(`getSwiperList: `, result)
         this.setData({
-          swiperList:result
+          swiperList:result.banners
         })
     })
   },
