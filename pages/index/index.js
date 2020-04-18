@@ -24,7 +24,8 @@ Page({
     
     this.getSwiperList();
     this.getCateList();
-    this.getFloorList();
+    // this.getCateList();
+    // this.getFloorList();
 
   },
 
@@ -34,16 +35,17 @@ Page({
     .then(result=>{
       console.log(`getSwiperList: `, result)
         this.setData({
-          swiperList:result.banners
+          swiperList:result.banners,
+          catesList:result.navigates
         })
     })
   },
   //获取 分类导航数据
   getCateList(){
-    request({url: "/home/catitems" })
+    request({url: "/home/list" })
     .then(result=>{
         this.setData({
-          catesList:result
+          catesList:result.navigates
         })
     })
   },

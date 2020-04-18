@@ -39,8 +39,9 @@
     url="/pages/category/index"
     open-type="switchTab"
     >
-    <image src="{{item.image_src}}" mode="widthFix" >
+    <image src="{{item.imgUrl}}" mode="widthFix" >
     </image>
+    {{item.name}}
     </navigator>
   </view>
   <!-- 导航 结束 -->
