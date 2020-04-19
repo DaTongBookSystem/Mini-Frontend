@@ -48,7 +48,9 @@
     >
     <image src="{{item.imgUrl}}" mode="widthFix" >
     </image>
+    <text>
     {{item.name}}
+    </text>
     </navigator>
   </view>
   <!-- 导航 结束 -->
@@ -59,7 +61,7 @@
     wx:for="{{floorList}}"
     wx:for-item="item1"
     wx:for-index="index1"
-    wx:key="floor_title"
+    wx:key="categoryDetail"
     >
       <!-- 标题 -->
       <view class="floor_title">
