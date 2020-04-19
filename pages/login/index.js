@@ -21,6 +21,7 @@ Page({
           if (result.code === 200) {
             userInfo.openid = result.data.openid;
             // 根据微信用户信息创建或更新用户，并获取token信息
+            console.log(`userInfo:`, userInfo)
             Api.insertUser(userInfo).then((result) => {
               if (result.code === 200) {
                 userInfo.token = result.data.token;
