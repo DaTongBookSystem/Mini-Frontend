@@ -75,15 +75,15 @@ Page({
     // })
 
     // 1 使用es7的async await来发送请求
-    const res=await request({url:"/categories"});
+    const res=await request({url:"/home/category/list"});
     // this.Cates=res.data.message;
     this.Cates=res;
     //把接口的数据存入到本地存储中
     wx.setStorageSync("cates", {time:Date.now(),data:this.Cates});
     //构造左侧的大菜单数据
-    let leftMenuList=this.Cates.map(v =>v.cat_name);
+    let leftMenuList=this.Cates.map(v =>v.name);
     //构造右侧的商品数据
-    let rightContent=this.Cates[0].children;
+    let rightContent=['你好'];
     this.setData({
       leftMenuList,
       rightContent

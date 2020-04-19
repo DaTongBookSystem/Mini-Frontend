@@ -23,7 +23,7 @@ Page({
     // });
     
     this.getSwiperList();
-    this.getCateList();
+    // this.getCateList();
     // this.getCateList();
     // this.getFloorList();
 
@@ -36,7 +36,8 @@ Page({
       console.log(`getSwiperList: `, result)
         this.setData({
           swiperList:result.banners,
-          catesList:result.navigates
+          catesList:result.navigates,
+          floorList:result.products
         })
     })
   },

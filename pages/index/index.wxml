@@ -56,19 +56,19 @@
     >
       <!-- 标题 -->
       <view class="floor_title">
-        <image mode="widthFix" src="{{item1.floor_title.image_src}}">
+        <image mode="widthFix" src="{{item1.categoryDetail.homeImgUrl}}">
         </image>
       </view>
       <!-- 内容 -->
       <view class="floor_list">
         <navigator
-        wx:for="{{item1.product_list}}"
+        wx:for="{{item1.productList}}"
         wx:for-item="item2"
         wx:for-index="index2"
         wx:key="name"
         url="{{item2.navigator_url}}"
         >
-        <image src="{{item2.image_src}}" mode="{{index2===0?'widthFix':'scaleToFill'}}" >
+        <image src="{{item2.mainImgUrl}}" mode="{{index2===0?'widthFix':'scaleToFill'}}" >
         </image>
         </navigator>
       </view>
