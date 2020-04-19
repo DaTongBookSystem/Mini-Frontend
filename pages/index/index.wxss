@@ -1,25 +1,40 @@
+.index_zhiding {
+  padding: 10rpx 10rpx;
+  display: flex;
+}
+.index_zhiding image {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
 .index_swiper swiper {
   width: 750rpx;
   height: 340rpx;
+  padding: 10rpx 10rpx;
 }
 .index_swiper swiper image {
   width: 100%;
+  height: 100%;
 }
 .index_cate {
   display: flex;
 }
 .index_cate navigator {
-  padding: 20rpx;
+  padding: 10rpx 10rpx;
   flex: 1;
 }
 .index_cate navigator image {
   width: 100%;
 }
 .index_floor .floor_group .floor_title {
-  padding: 10rpx 0;
+  padding: 10rpx 10rpx;
 }
 .index_floor .floor_group .floor_title image {
   width: 100%;
+}
+.index_floor .floor_group .floor_list {
+  padding: 10rpx 10rpx;
 }
 .index_floor .floor_group .floor_list navigator {
   overflow: hidden;
