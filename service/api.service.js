@@ -1,12 +1,12 @@
 
 // import config from '../config';
-const {request} = require('../request/index')
+const {request, userRequest} = require('../request/index')
 
 /** 用户管理 */
 // 从微信获取openid
-const getOpenid = (code) => request({url: `/mini/getOpenid?code=${code}`})
+const getOpenid = (code) => userRequest({url: `/mini/getOpenid?code=${code}`})
 // 创建用户,用户授权时使用
-const insertUser = (user) => request({url: '/user/insertUser', data: user, method: 'POST'})
+const insertUser = (user) => userRequest({url: '/user/insertUser', data: user, method: 'POST'})
 // // 获取用户信息
 // const getUserInfo = (openid) => httpServer.get({ url: `/user/userInfo` });
 // // 更新用户信息
