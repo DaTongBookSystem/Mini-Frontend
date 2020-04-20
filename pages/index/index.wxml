@@ -77,7 +77,7 @@
         wx:key="name"
         url="{{item2.navigator_url}}"
         >
-        <image src="{{item2.mainImgUrl}}" mode="{{index2===0?'widthFix':'scaleToFill'}}" >
+        <image src="{{item2.mainImgUrl}}" mode="widthFix" >
         </image>
         </navigator>
       </view>
