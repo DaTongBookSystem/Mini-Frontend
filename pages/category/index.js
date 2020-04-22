@@ -13,6 +13,7 @@ Page({
   },
   // 接口的返回数据
   Cates:[],
+  Books: [],
 
   onLoad: function (options) {
     /*
@@ -78,12 +79,28 @@ Page({
     const res=await request({url:"/home/category/list"});
     // this.Cates=res.data.message;
     this.Cates=res;
+    const books = await request({ url: "/book/list" })
+    this.Books = books;
     //把接口的数据存入到本地存储中
     wx.setStorageSync("cates", {time:Date.now(),data:this.Cates});
+    wx.setStorageSync("books", {time:Date.now(),data:this.Books});
     //构造左侧的大菜单数据
     let leftMenuList=this.Cates.map(v =>v.name);
     //构造右侧的商品数据
-    let rightContent=['你好'];
+    let rightContent= this.fitlerCats(this.Cates);
+    // let rightContent = this.Cates.map(v => {
+    //   let categoryBooks = { cat_name: v.name }
+    //   categoryBooks.children = this.Books.filter(book => {
+    //     return (book.category || []).includes(v.id)
+    //   }).map(book => {
+    //     return {
+    //       cat_name: book.name,
+    //       cat_id: book.id,
+    //       cat_icon: book.mainImgUrl
+    //     }
+    //   })
+    //   return categoryBooks;
+    // })
     this.setData({
       leftMenuList,
       rightContent
@@ -97,13 +114,32 @@ Page({
     3 根据不同的索引来渲染右侧的商品内容
     */
    const{index}=e.currentTarget.dataset;
-
-   let rightContent=this.Cates[index].children;
+  console.log(this.Cates[index])
+   let rightContent = this.fitlerCats([this.Cates[index]])
+   console.log(rightContent)
    this.setData({
     currentIndex: index,
     rightContent,
     // 重新设置 右侧内容的scroll-view标签的距离顶部的距离
     scrollTop:0
    })
+  },
+
+  // 根据分类获取书籍
+  fitlerCats(cates) {
+    console.log(cates)
+    return cates.map(v => {
+      let categoryBooks = { cat_name: v.name }
+      categoryBooks.children = this.Books.filter(book => {
+        return (book.category || []).includes(v.id)
+      }).map(book => {
+        return {
+          cat_name: book.name,
+          cat_id: book.id,
+          cat_icon: book.mainImgUrl
+        }
+      })
+      return categoryBooks;
+    })
   }
 })
