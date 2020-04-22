@@ -127,7 +127,6 @@ Page({
 
   // 根据分类获取书籍
   fitlerCats(cates) {
-    console.log(cates)
     return cates.map(v => {
       let categoryBooks = { cat_name: v.name }
       categoryBooks.children = this.Books.filter(book => {

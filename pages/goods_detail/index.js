@@ -48,16 +48,31 @@ Page({
   },
   // 获取商品详情数据
   async getGoodsDetail(goods_id){
-    const goodsObj=await request({url:"/goods/detail",data:{goods_id}});
-    this.GoodsInfo=goodsObj;
+    const goodsObj=await request({url:"/book/" + goods_id});
+    goodsObj.goods_price = goodsObj.value
+    goodsObj.goods_name = goodsObj.name
+    goodsObj.goods_introduce = `<img  style="width:100%;height:auto;display: block" src=${goodsObj.descImgUrl}> </img>`;
+    goodsObj.pics = goodsObj.imageUrlList.map(imageUrl => {
+      return {
+        pics_mid: imageUrl
+      }
+    })
+    console.log(goodsObj);
+    this.GoodsInfo= {
+      goods_price: goodsObj.nums,
+      goods_name: goodsObj.name,
+      goods_introduce: goodsObj.goods_introduce,
+      pics: goodsObj.pics
+    };
+    console.log(this.GoodsInfo);
     // 1 获取缓存中的商品收藏的数组
     let collect=wx.getStorageSync("collect")||[];
     // 2 判断当前商品是否被收藏
     let isCollect=collect.some(v=>v.goods_id===this.GoodsInfo.goods_id);
     this.setData({
       goodsObj:{
-        goods_name:goodsObj.goods_name,
-        goods_price:goodsObj.goods_price,
+        goods_name:this.GoodsInfo.goods_name,
+        goods_price:this.GoodsInfo.goods_price,
         // iphone部分手机 不识别 webp图片格式
         // 最好找到后台 让他进行修改
         // 临时自己改 确保后台存在 1.webp => 1.jpg
