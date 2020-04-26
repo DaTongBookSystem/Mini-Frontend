@@ -49,7 +49,7 @@
             </view>
         </block>
         <block wx:else>
-            <image mode="widthFix" src="http://www.le-jiujiu.com/Public/Mobile/images/kg1.png"></image>
+            <image mode="widthFix" src="https://zmcm.oss-cn-zhangjiakou.aliyuncs.com/bag.png"></image>
         </block>
     </view>
 </view>

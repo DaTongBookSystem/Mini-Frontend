@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/category/index",
+    "pages/categoryBook/index",
     "pages/goods_list/index",
     "pages/goods_detail/index",
     "pages/cart/index",
@@ -18,7 +19,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#eb4450",
-    "navigationBarTitleText": "借书小程序",
+    "navigationBarTitleText": "智慧书屋",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

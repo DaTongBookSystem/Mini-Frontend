@@ -1,4 +1,3 @@
-//Page Object
 // 0 引入 用来发送请求的 方法 一定要把路径补全
 import { request } from "../../request/index.js";
 Page({
@@ -23,9 +22,9 @@ Page({
     // });
     
     this.getSwiperList();
-    // this.getCateList();
-    // this.getCateList();
-    // this.getFloorList();
+    this.getCateList();
+    this.getCateList();
+    this.getFloorList();
 
   },
 

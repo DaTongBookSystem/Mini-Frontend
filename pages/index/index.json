@@ -2,5 +2,5 @@
   "usingComponents": {
     "Searchinput":"../../components/Searchinput/Searchinput"
   },
-  "navigationBarTitleText": "借书首页"
+  "navigationBarTitleText": "智慧书屋"
 }

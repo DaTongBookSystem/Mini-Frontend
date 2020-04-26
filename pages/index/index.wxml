@@ -18,7 +18,7 @@
       320px * 240px
     3 设计图片和轮播图
       1 先看一下原图的宽高 750 * 340
-      2 让图片高度自适应 宽度 等于%100
+      2 让图片高度自适应 宽度 等于100%
       3 让swipe标签的高度 变成和图片的高一样即可
     4图片标签
       mode属性 渲染模式
@@ -27,7 +27,7 @@
     <swiper autoplay="{{true}}" indicator-dots="{{true}}" circular="{{true}}" interval="5000" duration="500">
     <swiper-item
     wx:for="{{swiperList}}"
-    wx:key="goods_id"
+    wx:key="id"
     >
       <navigator url="{{item.linkTo}}">
       <image mode="widthFix" src="{{item.imgUrl}}">
@@ -77,7 +77,7 @@
         wx:key="name"
         url="{{item2.navigator_url}}"
         >
-        <image src="{{item2.mainImgUrl}}" mode="widthFix" >
+        <image src="{{item2.mainImgUrl}}" mode="{{index2===0?'widthFix':'scaleToFill'}}">
         </image>
         </navigator>
       </view>

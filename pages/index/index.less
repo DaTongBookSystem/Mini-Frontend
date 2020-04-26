@@ -2,6 +2,7 @@
     padding: 10rpx 10rpx;
     display: flex;
     image{
+        border-radius: 15rpx;
         align-items: center;
         justify-content: center;
         height: 100%;
@@ -54,24 +55,33 @@
                 overflow: hidden;
                 float: left;
                 width: 50%;
+            /* 后五个超链接 */
+            &:nth-last-child(-n+5){
+                /* 原图的宽高 232 *386 */
+                // 800 / 800 = 50vw / height
+                // 第一张图片的高度 height: 33.33vw * 386 / 232;
+                height: 450rpx ;
+            }
 
-            /* 后四个超链接 */
-            // &:nth-last-child(-n+4){
-            //     /* 原图的宽高 232 *386 */
-            //     // 232 / 386 = 33.33vw / height
-            //     // 第一张图片的高度 height: 33.33vw * 386 / 232;
-            //     height: 33.33vw * 386 / 232 / 2 ;
-            //     border-left: 10rpx solid #fff;
-            // }
+            /* 1 2 3 4 四个超链接 */
+            &:nth-child(1){
+                height: 450rpx ;
+            }
 
-            /* 2 3 两个超链接 */
-            // &:nth-child(2),
-            // &:nth-child(3){
-            //     border-bottom: 10rpx solid #fff;
-            // }
+            &:nth-child(1),
+            &:nth-child(2),
+            &:nth-child(3),
+            &:nth-child(4){
+                border-bottom: 10rpx solid #fff;
+            }
+            /* 2 4 6 三个超链接 */
+            &:nth-child(2),
+            &:nth-child(4),
+            &:nth-child(6){
+                border-left: 10rpx solid #fff;
+            }
                 image{
                     width: 100%;
-                    height: 100%;
                 }
             }
         }
