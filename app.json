@@ -1,5 +1,5 @@
 {
-  "pages": [ 
+  "pages": [
     "pages/index/index",
     "pages/category/index",
     "pages/goods_list/index",
@@ -12,7 +12,8 @@
     "pages/feedback/index",
     "pages/login/index",
     "pages/auth/index",
-    "pages/pay/index"
+    "pages/pay/index",
+    "pages/address/address"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -53,7 +54,6 @@
       }
     ]
   },
-  
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
