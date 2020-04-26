@@ -78,13 +78,14 @@ Page({
     const res=await request({url:"/home/category/list"});
     // this.Cates=res.data.message;
     this.Cates=res;
+    console.log(`getCates`, res);
     // const books = await request({ url: "/book/list" })
     // this.Books = books;
     //把接口的数据存入到本地存储中
     wx.setStorageSync("cates", {time:Date.now(),data:this.Cates});
     // wx.setStorageSync("books", {time:Date.now(),data:this.Books});
     //构造左侧的大菜单数据
-    // let leftMenuList=this.Cates.map(v =>v.name);
+    let leftMenuList=this.Cates.map(v =>v.name);
     //构造右侧的商品数据
     // let rightContent= this.fitlerCats(this.Cates);
     // let rightContent = this.Cates.map(v => {
