@@ -3,10 +3,6 @@ page{
 }
 .cates{
     height: 100%;
-    .cates_container{
-        /* less 中使用calc的时候要注意*/
-        height: ~'calc( 100vh - 90rpx )';
-        display: flex;
         // .left_menu{
         //     /* 子项 高度 100% */
         //     // flex: 2;
@@ -23,10 +19,6 @@ page{
         //         border-left: 5px solid currentColor;
         //     }
         // }
-
-        .right_content{
-            /* 子项 高度 100% */
-            // flex: 5;
             .goods_group{
             .goods_title{
                 height: 80rpx;
@@ -38,7 +30,6 @@ page{
                     padding: 0 10rpx;
                 }
                 .title{}
-            }
                 .goods_list{
                     display: flex;
                     flex-wrap: wrap;
@@ -56,4 +47,3 @@ page{
             }
         }
     }
-}

@@ -102,9 +102,27 @@ Page({
     //   return categoryBooks;
     // })
     this.setData({
-      leftMenuList
+      leftMenuList,
     })
-  }
+  },
+  // 左侧菜单的点击事件
+  // handleItemTap(e){
+  //       /*
+  //       1 获取被点击的标题身上的索引
+  //       2 给data中的currentIndex赋值
+  //       3 根据不同的索引来渲染右侧的商品内容
+  //       */
+  //   const{index}=e.currentTarget.dataset;
+  //   console.log(this.Cates[index])
+  //   // let rightContent = this.fitlerCats([this.Cates[index]])
+  //   // console.log(rightContent)
+  //   // this.setData({
+  //   // // currentIndex: index,
+  //   // rightContent,
+  //   // 重新设置 右侧内容的scroll-view标签的距离顶部的距离
+  //   // scrollTop:0
+  //   // })
+  // }
   // 根据分类获取书籍
 //   fitlerCats(cates) {
 //     return cates.map(v => {

@@ -43,8 +43,8 @@
     <navigator
     wx:for="{{catesList}}"
     wx:key="name"
-    url="/pages/category/index"
-    open-type="switchTab"
+    url="/pages/freight/freight"
+    open-type="navigate"
     >
     <image src="{{item.imgUrl}}" mode="widthFix" >
     </image>

@@ -1,18 +1,13 @@
 <view class="cates">
-    <Searchinput></Searchinput>
-    <view class="cates_container">
-        <!-- 左侧菜单 -->
-        <!-- <scroll-view scroll-y="{{true}}" class="left_menu"> -->
-           <view 
+    <Searchinput></Searchinput> 
+    <navigator url="/pages/categoryBook/index"open-type="navigate" >
+        <view 
            class="menu_item"
            wx:for="{{leftMenuList}}"
            wx:key="this"
-           bindtap="handleItemTap"
            data-index="{{index}}"
-           url="/pages/categoryBook/index"
            >
            {{item}}
-           </view> 
-        <!-- </scroll-view> -->
-    </view>
+        </view> 
+    </navigator> 
 </view>

@@ -8,8 +8,9 @@ Page({
     scrollTop:0
   },
     // 接口的返回数据
-    Cates:[],
+    // Cates:[],
     Books: [],
+
     onLoad: function (options) {
       /*
       0 web中的本地存储 和 小程序中的本地存储的区别
@@ -38,7 +39,7 @@ Page({
           this.getCates();
         }else{
           //可以使用旧的数据
-          this.Cates=Cates.data;
+          // this.Cates=Cates.data;
           let rightContent=this.Cates[0].children;
           this.setData({
             rightContent
@@ -61,7 +62,7 @@ Page({
       //   //构造左侧的大菜单数据
       //   let leftMenuList=this.Cates.map(v =>v.cat_name);
       //   //构造右侧的商品数据
-      //   let rightContent=this.Cates[0].children;
+      // let rightContent=this.Cates[0].children;
       //   this.setData({
       //     leftMenuList,
       //     rightContent
@@ -71,15 +72,16 @@ Page({
       // 1 使用es7的async await来发送请求
       const res=await request({url:"/home/category/list"});
       // this.Cates=res.data.message;
-      this.Cates=res;
+      // this.Cates=res;
+      // console.log(`getCates`, res);
       const books = await request({ url: "/book/list" })
       this.Books = books;
       //把接口的数据存入到本地存储中
-      wx.setStorageSync("cates", {time:Date.now(),data:this.Cates});
+      // wx.setStorageSync("cates", {time:Date.now(),data:this.Cates});
       wx.setStorageSync("books", {time:Date.now(),data:this.Books});
-      //构造左侧的大菜单数据
+      // 构造左侧的大菜单数据
       // let leftMenuList=this.Cates.map(v =>v.name);
-      //构造右侧的商品数据
+      // 构造右侧的商品数据
       // let rightContent= this.fitlerCats(this.Cates);
       // let rightContent = this.Cates.map(v => {
       //   let categoryBooks = { cat_name: v.name }
@@ -99,23 +101,23 @@ Page({
       })
     },
     // 左侧菜单的点击事件
-    handleItemTap(e){
-      /*
-      1 获取被点击的标题身上的索引
-      2 给data中的currentIndex赋值
-      3 根据不同的索引来渲染右侧的商品内容
-      */
-     const{index}=e.currentTarget.dataset;
-    console.log(this.Cates[index])
-     let rightContent = this.fitlerCats([this.Cates[index]])
-     console.log(rightContent)
-     this.setData({
-      // currentIndex: index,
-      rightContent,
-      // 重新设置 右侧内容的scroll-view标签的距离顶部的距离
-      scrollTop:0
-     })
-    }
+    // handleItemTap(e){
+    //   /*
+    //   1 获取被点击的标题身上的索引
+    //   2 给data中的currentIndex赋值
+    //   3 根据不同的索引来渲染右侧的商品内容
+    //   */
+    //  const{index}=e.currentTarget.dataset;
+    // console.log(this.Cates[index])
+    //  let rightContent = this.fitlerCats([this.Cates[index]])
+    //  console.log(rightContent)
+    //  this.setData({
+    //   // currentIndex: index,
+    //   rightContent,
+    //   // 重新设置 右侧内容的scroll-view标签的距离顶部的距离
+    //   scrollTop:0
+    //  })
+    // }
   
     // 根据分类获取书籍
     // fitlerCats(cates) {
