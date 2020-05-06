@@ -5,22 +5,13 @@
             wx:for-index="index1"
             wx:for-item="item1"
             >
-                <view class="goods_title">
-                    <text class="delimiter">/</text>
-                    <text class="title">{{item1.cat_name}}</text>
-                    <text class="delimiter">/</text>
-                </view>
                 <view class="goods_list">
                     <!-- url="/pages/goods_list/index?cid={{item2.cat_id}}"  -->
                     <navigator
-                    wx:for="{{item1.children}}"
-                    wx:for-index="index2"
-                    wx:for-item="item2"
-                    wx:key="cat_id"
-                    url="/pages/goods_detail/index?goods_id={{item2.cat_id}}"
+                    url="/pages/goods_detail/index?goods_id={{item1.id}}"
                     >
-                    <image mode="widthFix" src="{{item2.cat_icon}}"></image>
-                    <view class="goods_name">{{item2.cat_name}}</view>
+                    <image mode="widthFix" src="{{item1.mainImgUrl}}"></image>
+                    <view class="goods_name">{{item1.name}}</view>
                     </navigator>
                 </view>
             </view>

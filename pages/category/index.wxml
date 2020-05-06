@@ -1,6 +1,11 @@
 <view class="cates">
     <Searchinput></Searchinput> 
-    <navigator url="/pages/categoryBook/index"open-type="navigate" >
+    <view  wx:for="{{leftMenuList}}">
+     <navigator url="/pages/categoryBook/index?categoryId={{item.id}}" open-type="navigate" >
+      {{item.name}}
+      </navigator>
+    </view>
+    <!-- <navigator url="/pages/categoryBook/index?categoryId={{item.id}}" open-type="navigate" >
         <view 
            class="menu_item"
            wx:for="{{leftMenuList}}"
@@ -9,5 +14,5 @@
            >
            {{item}}
         </view> 
-    </navigator> 
+    </navigator>  -->
 </view>

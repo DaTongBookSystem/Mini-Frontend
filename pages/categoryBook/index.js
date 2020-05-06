@@ -11,7 +11,7 @@ Page({
     // Cates:[],
     Books: [],
 
-    onLoad: function (options) {
+    onLoad: async function (options) {
       /*
       0 web中的本地存储 和 小程序中的本地存储的区别
         1 写代码的方式不一样
@@ -25,27 +25,32 @@ Page({
       2 没有旧数据 直接发送新请求
       3 有旧的数据 同时 旧的数据也没有过期 就是用 本地存储中的旧数据即可
       */
-  
+      console.log(options)
+      const res = await request({url: `/home/listBook/${options.categoryId}`});
+      console.log(res);
+      this.setData({
+            rightContent: res
+      })
       // 1 获取本地存储中的数据 {小程序中存在本地存储 技术}
-      const Cates = wx.getStorageSync("cates");
-      // 2 判断
-      if(!Cates){
-        //不存在 发送请求获取数据
-        this.getCates();
-      }else{
-        // 有旧的数据 定义过期时间  10s 改成 5分钟
-        if(Date.now()-Cates.time>1000*10) {
-          //重新发送请求
-          this.getCates();
-        }else{
-          //可以使用旧的数据
-          // this.Cates=Cates.data;
-          let rightContent=this.Cates[0].children;
-          this.setData({
-            rightContent
-          })
-        }
-      }
+      // const Cates = wx.getStorageSync("cates");
+      // // 2 判断
+      // if(!Cates){
+      //   //不存在 发送请求获取数据
+      //   this.getCates();
+      // }else{
+      //   // 有旧的数据 定义过期时间  10s 改成 5分钟
+      //   if(Date.now()-Cates.time>1000*10) {
+      //     //重新发送请求
+      //     this.getCates();
+      //   }else{
+      //     //可以使用旧的数据
+      //     // this.Cates=Cates.data;
+      //     let rightContent=this.Cates[0].children;
+      //     this.setData({
+      //       rightContent
+      //     })
+      //   }
+      // }
     },
     //获取分类数据
     async getCates(){
