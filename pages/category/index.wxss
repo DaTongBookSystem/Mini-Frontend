@@ -4,10 +4,29 @@ page {
 .cates {
   height: 100%;
 }
-.cates .menu_item {
-  height: 80rpx;
-  display: flex;
+.cates .container {
+  padding: 10rpx 10rpx;
+}
+.cates .container navigator {
+  overflow: hidden;
+  float: left;
+  width: 50%;
+}
+.cates .container navigator:nth-child(1),
+.cates .container navigator:nth-child(2) {
+  border-bottom: 10rpx solid #fff;
+}
+.cates .container navigator:nth-child(2),
+.cates .container navigator:nth-child(5),
+.cates .container navigator:nth-child(7),
+.cates .container navigator:nth-child(9) {
+  border-left: 10rpx solid #fff;
+}
+.cates .container navigator image {
+  width: 100%;
+}
+.cates .container .text {
   justify-content: center;
-  align-items: center;
-  font-size: 30rpx;
+  display: flex;
+  color: var(--themeColor);
 }

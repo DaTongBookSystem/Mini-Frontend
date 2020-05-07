@@ -141,9 +141,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 12,
 					"name": "分类2",
 					"pathName": "pages/categoryBook/index",
+					"query": "categoryId=1",
 					"scene": null
 				}
 			]

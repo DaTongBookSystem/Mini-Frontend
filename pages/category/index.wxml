@@ -1,9 +1,19 @@
 <view class="cates">
     <Searchinput></Searchinput> 
-    <view  wx:for="{{leftMenuList}}">
-     <navigator url="/pages/categoryBook/index?categoryId={{item.id}}" open-type="navigate" >
-      {{item.name}}
-      </navigator>
+    <view class="container" >
+    <navigator
+     wx:for="{{leftMenuList}}"
+     wx:for-item="item"
+     wx:for-index="index"
+     wx:key="id"
+     url="/pages/categoryBook/index?categoryId={{item.id}}" open-type="navigate" >
+     <image 
+     src="{{item.homeImgUrl}}" mode="{{index===0?'widthFix':'scaleToFill'}}" >
+     </image>
+     <text class="text">
+     {{item.name}}
+     </text>
+    </navigator>
     </view>
     <!-- <navigator url="/pages/categoryBook/index?categoryId={{item.id}}" open-type="navigate" >
         <view 

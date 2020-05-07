@@ -4,24 +4,17 @@ page {
 .cates {
   height: 100%;
 }
-.cates .goods_group .goods_title {
-  height: 80rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.cates .goods_group .goods_title .delimiter {
-  color: #ccc;
-  padding: 0 10rpx;
-}
-.cates .goods_group .goods_title .goods_list {
+.cates .goods_group .goods_list {
   display: flex;
   flex-wrap: wrap;
+  padding: 10rpx 10rpx;
 }
-.cates .goods_group .goods_title .goods_list navigator {
+.cates .goods_group .goods_list navigator {
   width: 50%;
   text-align: center;
+  overflow: hidden;
+  float: left;
 }
-.cates .goods_group .goods_title .goods_list navigator image {
+.cates .goods_group .goods_list navigator image {
   width: 100%;
 }
