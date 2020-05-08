@@ -4,17 +4,22 @@ page {
 .cates {
   height: 100%;
 }
-.cates .goods_group .goods_list {
-  display: flex;
-  flex-wrap: wrap;
+.cates .goods_group {
   padding: 10rpx 10rpx;
 }
 .cates .goods_group .goods_list navigator {
-  width: 50%;
-  text-align: center;
   overflow: hidden;
   float: left;
+  width: 50%;
 }
-.cates .goods_group .goods_list navigator image {
+.cates .goods_group .goods_list navigator .goods_img_wrap image {
   width: 100%;
+}
+.cates .goods_group .goods_list navigator .goods_info_wrap {
+  display: flex;
+  justify-content: center;
+}
+.cates .goods_group .goods_list navigator .goods_info_wrap .goods_price {
+  color: var(--themeColor);
+  font-size: 32rpx;
 }

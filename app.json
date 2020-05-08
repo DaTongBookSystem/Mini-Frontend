@@ -15,7 +15,8 @@
     "pages/auth/index",
     "pages/pay/index",
     "pages/address/address",
-    "pages/freight/freight"
+    "pages/freight/freight",
+    "pages/vip/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

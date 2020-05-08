@@ -4,25 +4,31 @@ page{
 .cates{
     height: 100%;
             .goods_group{
+                padding: 10rpx 10rpx;
                 .goods_list{
-                    display: flex;
-                    flex-wrap: wrap;
-                        
-                    padding: 10rpx 10rpx;
                     navigator{
-                        width: 50%;
-                        text-align: center;
+                        // 清除浮动
                         overflow: hidden;
                         float: left;
-
+                        width: 50%;
+                    .goods_img_wrap{
                         image{
                             width: 100%;
-                        }
+                        } 
+                    }
+                    .goods_info_wrap{
+                        display: flex;
+                        justify-content: center;
                         .goods_name{
-
+                            
+                        }
+                        .goods_price{
+                            color: var(--themeColor);
+                            font-size: 32rpx;
                         }
                     }
                 }
                 
             }
         }
+    }

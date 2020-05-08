@@ -54,11 +54,17 @@
                     </navigator>
                 </view>
             </view>
+            <view class="app_vip_wrap">
+            <!-- 会员中心管理 -->
+            <view class="vip_wrap">
+                <navigator url="/pages/vip/index" class="app_info_item">会员中心</navigator>
+            </view>
             <!-- 收获地址管理 -->
-            <!-- <view class="address_wrap">
+            <view class="address_wrap">
                 <navigator url="/pages/address/address" class="app_info_item">收货地址管理</navigator>
             </view>
-            -->
+            </view>
+           
           
             <!-- 应用信息相关 -->
             <view class="app_info_wrap">

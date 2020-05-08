@@ -86,10 +86,17 @@ page {
   color: var(--themeColor);
   font-size: 40rpx;
 }
-.user_content .user_main .address_wrap {
+.user_content .user_main .app_vip_wrap {
   margin-top: 30rpx;
   background-color: #fff;
+}
+.user_content .user_main .app_vip_wrap .address_wrap {
   padding: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.user_content .user_main .app_vip_wrap .vip_wrap {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #ccc;
 }
 .user_content .user_main .app_info_wrap {
   margin-top: 30rpx;
