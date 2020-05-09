@@ -88,7 +88,7 @@ Page({
   async testPay() {
     const data = await request({url: '/wxapi/wxpayVip', method:"POST", data: {
       vipType: 5
-    }})
+    }}, true)
     console.log(`wx pay:`, data);
     const pay = {
       timeStamp: data.timeStamp,
