@@ -45,7 +45,8 @@
         <view >包含运费</view>
     </view>
     <!-- 支付 -->
-    <view class="order_pay_wrap" bindtap="handleOrderPay">
-        支付({{totalNum}})
+    <view class="order_pay_wrap" bindtap="testPay">
+        <!-- 支付({{totalNum}}) -->
+        支付
     </view>
 </view>
