@@ -1,5 +1,93 @@
 page{
     padding-bottom: 90rpx;
+    background-color: #edece8;
+}
+
+.user_info_wrap{
+  height: 25vh;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--themeColor);
+  .user_img_wrap{
+    position: relative;
+    .user_bg{
+      height: 30vh;
+      filter: blur(10rpx);
+      border-radius: 10%;
+      padding: 10rpx;
+    }
+    .user_info{
+      position: absolute;
+      left: 20%;
+      transform: translateX(-20%);
+      top: 10%;
+      display: flex;
+      .user_icon{
+        flex: 1.4;
+        width: 150rpx;
+        height: 150rpx;
+        border-radius: 50%;
+      }
+      .user_information{
+        flex: 3;
+        .user_name{
+          font-size: 40rpx;
+          color: var(--themeColor);
+        }
+        .user_vip_type{
+          font-size: 30rpx;
+          color: #fff;
+        }
+        .user_date{
+          font-size: 30rpx;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .user_btn{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
+    border: 1rpx solid greenyellow;
+    color: greenyellow;
+    font-size: 38rpx;
+    padding: 30rpx;
+    border-radius: 10rpx;
+  }
+}
+
+.vip_wrap{
+  position: relative;
+  .vip_main{
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40rpx;
+    .vip_kind{
+      display: flex;
+      background-color: #fff;
+      .vip_type{
+        flex: 1;
+        text-align: center;
+        padding: 20rpx 0rpx;
+        .vip_name{
+          font-size: 30rpx;
+          padding: 10rpx 0;
+        }
+        .vip_price{
+          font-size: 35rpx;
+          color: var(--themeColor);
+          padding: 10rpx 0;
+        }
+      }
+      .vip_type1{
+        border-left: 10px solid #edece8;
+      }
+    }
+  }
 }
 
   .footer_tool {
@@ -11,20 +99,6 @@ page{
     background-color: #fff;
     display: flex;
     border-top: 1rpx solid #ccc;
-  
-    .total_price_wrap {
-        flex: 5;
-        padding-right: 15rpx;
-        text-align: right;
-      .total_price {
-        .total_price_text {
-            color: var(--themeColor);
-            font-size: 34rpx;
-            font-weight: 600;
-        }
-      }
-  
-
     }
   
     .order_pay_wrap {
@@ -37,4 +111,3 @@ page{
         justify-content: center;
         align-items: center;
     }
-  }

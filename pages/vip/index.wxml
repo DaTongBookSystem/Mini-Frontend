@@ -1,49 +1,48 @@
-<!-- 收货地址 -->
-<view class="revice_address_row">
-    <view  class="user_info_row">
-        <view class="user_info">
-           <view >{{address.userName}}</view>
-           <view >{{address.all}}</view>
-        </view>
-        <view class="user_phone">{{address.telNumber}}</view>
-    </view>
-</view>
-
-<!-- 购物车内容 -->
-<view class="cart_content">
-    <view class="cart_title">购物车</view>
-    <view class="cart_main">
-        <!-- 当cart数组 长度不为0 显示 商品信息 -->
-            <view class="cart_item"
-                wx:for="{{cart}}"
-                wx:key="goods_id"
-                >
-                <!-- 商品图片 -->
-                <navigator class="cart_img_wrap">
-                    <image mode="widthFix" src="{{item.goods_small_logo}}"></image>
-                </navigator>
-                <!-- 商品信息 -->
-                <view class="cart_info_wrap">
-                    <view class="goods_name">{{item.goods_name}}</view>
-                    <view class="goods_price_wrap">
-                        <view class="goods_price">￥{{item.goods_price}}</view>
-                        <view class="cart_num_tool"> 
-                            <view class="goods_num">X {{item.num}}</view>
-                        </view>
-                    </view>
+    <!-- 用户信息 -->
+    <view class="user_info_wrap">
+        <view wx:if="{{userinfo.avatarUrl}}" class="user_img_wrap">
+            <image class="user_bg" src="{{userinfo.avatarUrl}}"></image>
+            <view class="user_info">
+                <image class="user_icon" src="{{userinfo.avatarUrl}}"></image>
+                <view class="user_information">
+                <view class="user_name">{{userinfo.nickName}}</view>
+                <view class="user_vip_type">会员类型</view>
+                <view class="user_date">有效期至:2020/5/9(已过期)</view>
                 </view>
             </view>
+        </view>
+        <view wx:else class="user_btn">
+            <navigator url="/pages/login/index">登录</navigator>
+        </view>
     </view>
-</view>
+
+    <!-- 会员类型 -->
+    <view class="vip_wrap">
+        <view  class="vip_main">
+            <!-- 4种会员 -->
+            <view class="vip_kind">
+                <view class="vip_type">
+                        <view class="vip_name">状元卡</view>
+                        <view class="vip_price">￥508/年</view>
+                </view>
+                <view class="vip_type vip_type1">
+                        <view class="vip_name">榜眼卡</view>
+                        <view class="vip_price">￥328/年</view>
+                </view>
+                <view class="vip_type vip_type1">
+                        <view class="vip_name">探花卡</view>
+                        <view class="vip_price">￥228/年</view>
+                </view>
+                <view class="vip_type vip_type1">
+                        <view class="vip_name">体验卡</view>
+                        <view class="vip_price">￥0.01/年</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
 <!-- 底部工具栏 -->
 <view class="footer_tool">
-    <!-- 总价格 -->
-    <view class="total_price_wrap">
-        <view class="total_price">
-            合计：<text class="total_price_text">￥{{totalPrice}}</text>
-        </view>
-        <view >包含运费</view>
-    </view>
     <!-- 支付 -->
     <view class="order_pay_wrap" bindtap="testPay">
         <!-- 支付({{totalNum}}) -->

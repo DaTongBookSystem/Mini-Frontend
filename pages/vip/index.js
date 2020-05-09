@@ -6,9 +6,13 @@ Page({
     address:{},
     cart:[],
     totalPrice:0,
-    totalNum:0
+    totalNum:0,
+    userinfo:{},
+    vip:'0'
   },
   onShow(){
+    // 获取用户信息
+    const userinfo=wx.getStorageSync("userinfo");
     // 1 获取缓存中的收货地址
     const address=wx.getStorageSync("address");
     // 1 获取缓存中的购物车数据
@@ -28,7 +32,8 @@ Page({
         cart,
         totalPrice,
         totalNum,
-        address
+        address,
+        userinfo
       });
   },
   // 点击 支付
@@ -104,4 +109,5 @@ Page({
     await showToast({title:"支付成功"});
 
   }
+
 })
