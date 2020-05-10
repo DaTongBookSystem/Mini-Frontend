@@ -8,11 +8,11 @@
      wx:key="id"
      url="/pages/categoryBook/index?categoryId={{item.id}}" open-type="navigate" >
      <image 
-     src="{{item.homeImgUrl}}" mode="{{index===0?'widthFix':'scaleToFill'}}" >
+     src="{{item.homeImgUrl}}" mode="scaleToFill">
      </image>
-     <text class="text">
+     <view class="text">
      {{item.name}}
-     </text>
+     </view>
     </navigator>
     </view>
     <!-- <navigator url="/pages/categoryBook/index?categoryId={{item.id}}" open-type="navigate" >

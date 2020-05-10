@@ -13,7 +13,7 @@
                     >
                     <!--  上面 图片容器 -->
                     <view class="goods_img_wrap">
-                        <image mode="{{index1===0?'widthFix':'scaleToFill'}}" src="{{item1.mainImgUrl}}"></image>
+                        <image mode="scaleToFill" src="{{item1.mainImgUrl}}"></image>
                     </view>
                     <!--  下面 名字价格容器 -->
                     <view class="goods_info_wrap">

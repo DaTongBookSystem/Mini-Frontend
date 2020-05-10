@@ -1,3 +1,6 @@
+page{
+    background-color: #dedede;
+}
 .index_zhiding{
     padding: 10rpx 10rpx;
     display: flex;
@@ -18,6 +21,7 @@
         padding: 10rpx 10rpx;
         image{
             width: 100%;
+            border-radius: 15rpx;
         }
     }
 }
@@ -26,12 +30,14 @@
 .index_cate{
     display: flex;
     navigator{
-        padding: 10rpx 10rpx;
+        padding: 0rpx 10rpx;
         flex: 1;
-        text{
+        .text{
             justify-content: center;
+            color: purple;
             display: flex;
-            color: var(--themeColor);
+            font-size: 35rpx;
+            font-weight: 900;
         }
         image{
             width: 100%;
@@ -40,48 +46,29 @@
 }
 
 .index_floor{
-
     .floor_group{
         .floor_title{
             padding: 10rpx 10rpx;
            image{
-               width: 100%;
+            width: 100%;
+            height: 240rpx;
+            border-radius: 15rpx;
            } 
         }
         .floor_list{
             padding: 10rpx 10rpx;
             navigator{
-                // 清除浮动
-                overflow: hidden;
                 float: left;
                 width: 50%;
-            /* 后五个超链接 */
-            &:nth-last-child(-n+5){
-                /* 原图的宽高 232 *386 */
-                // 800 / 800 = 50vw / height
-                // 第一张图片的高度 height: 33.33vw * 386 / 232;
-                height: 450rpx ;
-            }
-
-            /* 1 2 3 4 四个超链接 */
-            &:nth-child(1){
-                height: 450rpx ;
-            }
-
-            &:nth-child(1),
-            &:nth-child(2),
-            &:nth-child(3),
-            &:nth-child(4){
-                border-bottom: 10rpx solid #fff;
-            }
-            /* 2 4 6 三个超链接 */
-            &:nth-child(2),
-            &:nth-child(4),
-            &:nth-child(6){
-                border-left: 10rpx solid #fff;
-            }
+                border-top: 5rpx solid #dedede;
+                &:nth-child(2),
+                &:nth-child(4),
+                &:nth-child(6){
+                    border-left: 10rpx solid #dedede;
+                }
                 image{
                     width: 100%;
+                    border-radius: 20rpx;
                 }
             }
         }

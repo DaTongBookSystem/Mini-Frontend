@@ -1,35 +1,30 @@
 page{
-    height: 100%;
+    background-color: #dedede;
 }
 .cates{
     height: 100%;
     .container{
-        padding: 10rpx 10rpx;
+        padding: 10rpx;
             navigator{
-                // 清除浮动
-                overflow: hidden;
                 float: left;
                 width: 50%;
-
-            &:nth-child(1),
-            &:nth-child(2){
-                border-bottom: 10rpx solid #fff;
-            }
-            
-            &:nth-child(2),
-            &:nth-child(5),
-            &:nth-child(7),
-            &:nth-child(9){
-                border-left: 10rpx solid #fff;
-            }
+                &:nth-child(2),
+                &:nth-child(4),
+                &:nth-child(6),
+                &:nth-child(8){
+                    border-left: 25rpx solid #dedede;
+                }
                 image{
                     width: 100%;
+                    border-radius: 20rpx;
                 }
             }
         .text{
             justify-content: center;
             display: flex;
             color: var(--themeColor);
+            font-weight: 900;
+            font-size: 35rpx;
         }
     }
 }

@@ -48,9 +48,9 @@
     >
     <image src="{{item.imgUrl}}" mode="widthFix" >
     </image>
-    <text>
+    <view class="text">
     {{item.name}}
-    </text>
+    </view>
     </navigator>
   </view>
   <!-- 导航 结束 -->
@@ -65,7 +65,7 @@
     >
       <!-- 标题 -->
       <view class="floor_title">
-        <image mode="widthFix" src="{{item1.categoryDetail.homeImgUrl}}">
+        <image mode="widthFix"mode="{{index1===0?'widthFix':'scaleToFill'}}" src="{{item1.categoryDetail.homeImgUrl}}">
         </image>
       </view>
       <!-- 内容 -->
@@ -77,7 +77,7 @@
         wx:key="name"
         url="{{item2.navigator_url}}"
         >
-        <image src="{{item2.mainImgUrl}}" mode="{{index2===0?'widthFix':'scaleToFill'}}">
+        <image src="{{item2.mainImgUrl}}" mode="scaleToFill">
         </image>
         </navigator>
       </view>

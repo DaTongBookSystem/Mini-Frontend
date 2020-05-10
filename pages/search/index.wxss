@@ -11,6 +11,7 @@ page {
   flex: 1;
   height: 100%;
   padding-left: 30rpx;
+  border-radius: 10rpx;
 }
 .search_row button {
   width: 110rpx;

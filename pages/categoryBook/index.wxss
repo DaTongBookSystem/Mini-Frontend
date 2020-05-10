@@ -1,5 +1,6 @@
 page {
   height: 100%;
+  background-color: #dedede;
 }
 .cates {
   height: 100%;
@@ -8,18 +9,27 @@ page {
   padding: 10rpx 10rpx;
 }
 .cates .goods_group .goods_list navigator {
-  overflow: hidden;
   float: left;
   width: 50%;
 }
+.cates .goods_group .goods_list navigator:nth-child(even) {
+  border-left: 20rpx solid #dedede;
+}
 .cates .goods_group .goods_list navigator .goods_img_wrap image {
   width: 100%;
+  border-radius: 20rpx;
 }
 .cates .goods_group .goods_list navigator .goods_info_wrap {
   display: flex;
   justify-content: center;
 }
+.cates .goods_group .goods_list navigator .goods_info_wrap .goods_name {
+  font-weight: 900;
+  font-size: 32rpx;
+  color: black;
+}
 .cates .goods_group .goods_list navigator .goods_info_wrap .goods_price {
   color: var(--themeColor);
   font-size: 32rpx;
+  font-weight: 900;
 }
