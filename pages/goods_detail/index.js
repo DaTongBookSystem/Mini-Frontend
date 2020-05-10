@@ -59,6 +59,7 @@ Page({
     })
     console.log(goodsObj);
     this.GoodsInfo= {
+      goods_id: parseInt(goods_id, 10),
       goods_price: goodsObj.nums,
       goods_name: goodsObj.name,
       goods_introduce: goodsObj.goods_introduce,
@@ -94,29 +95,55 @@ Page({
     });
   },
   // 点击 加入购物车
-  handleCartAdd(){
-    // 1 获取缓存中的购物车 数组
-    let cart=wx.getStorageSync("cart")||[];
-    // 2 判断 商品对象是否存在于购物车数组中
-    let index=cart.findIndex(v=>v.goods_id===this.GoodsInfo.goods_id);
-    if(index===-1){
-      // 3 不存在 第一次添加
-      this.GoodsInfo.num=1;
-      this.GoodsInfo.checked=true;
-      cart.push(this.GoodsInfo);
-    }else{
-      // 4 已经存在购物车数据 执行 num++
-      cart[index].num++;
+  async handleCartAdd(){
+    const userinfo = await request({url: '/user/userInfo'});
+    if (!userinfo) {
+      wx.showToast({
+        title: '请登录',
+        icon: 'none',
+        mask: true
+      });
+      return;
     }
-    // 5 把购物车重新添加回缓存中
-    wx.setStorageSync("cart", cart);
-    // 6 弹窗提示
+    const userId = userinfo.id;
+    const bookId = this.GoodsInfo.goods_id;
+    const response = await request({ url: '/shopcar', method: 'POST', data: { userId, bookId, num: 1 }});
+    if (response === 'success') {
+      wx.showToast({
+        title: '加入成功',
+        icon: 'success',
+        mask: true
+      });
+      return;
+    }
     wx.showToast({
-      title: '加入成功',
-      icon: 'success',
-      // true 防止用户 手抖 疯狂点击按钮 
+      title: '加入失败',
+      icon: 'none',
       mask: true
     });
+   
+    // // 1 获取缓存中的购物车 数组
+    // let cart=wx.getStorageSync("cart")||[];
+    // // 2 判断 商品对象是否存在于购物车数组中
+    // let index=cart.findIndex(v=>v.goods_id===this.GoodsInfo.goods_id);
+    // if(index===-1){
+    //   // 3 不存在 第一次添加
+    //   this.GoodsInfo.num=1;
+    //   this.GoodsInfo.checked=true;
+    //   cart.push(this.GoodsInfo);
+    // }else{
+    //   // 4 已经存在购物车数据 执行 num++
+    //   cart[index].num++;
+    // }
+    // // 5 把购物车重新添加回缓存中
+    // wx.setStorageSync("cart", cart);
+    // // 6 弹窗提示
+    // wx.showToast({
+    //   title: '加入成功',
+    //   icon: 'success',
+    //   // true 防止用户 手抖 疯狂点击按钮 
+    //   mask: true
+    // });
   },
   // 点击 商品收藏图标
   handleCollect(){
