@@ -28,27 +28,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsObj:{},
+    goodsObj: {},
     //商品是否被收藏
-    isCollect:false
+    isCollect: false
   },
   // 商品对象
-  GoodsInfo:{},
+  GoodsInfo: {},
   /**
    * 生命周期函数--监听页面加载
    */
   onShow: function () {
-    let pages =  getCurrentPages();
-    let currentPage=pages[pages.length-1];
-    let options=currentPage.options;
-    const{goods_id}=options;
+    let pages = getCurrentPages();
+    let currentPage = pages[pages.length - 1];
+    let options = currentPage.options;
+    const { goods_id } = options;
     this.getGoodsDetail(goods_id);
 
 
   },
   // 获取商品详情数据
-  async getGoodsDetail(goods_id){
-    const goodsObj=await request({url:"/book/" + goods_id});
+  async getGoodsDetail(goods_id) {
+    const goodsObj = await request({ url: "/book/" + goods_id });
     goodsObj.goods_price = goodsObj.value
     goodsObj.goods_name = goodsObj.name
     goodsObj.goods_introduce = `<img  style="width:100%;height:auto;display: block" src=${goodsObj.descImgUrl}> </img>`;
@@ -57,88 +57,133 @@ Page({
         pics_mid: imageUrl
       }
     })
-    console.log(goodsObj);
-    this.GoodsInfo= {
+    this.GoodsInfo = {
+      goods_id: parseInt(goods_id, 10),
       goods_price: goodsObj.nums,
       goods_name: goodsObj.name,
       goods_introduce: goodsObj.goods_introduce,
       pics: goodsObj.pics
     };
-    console.log(this.GoodsInfo);
     // 1 获取缓存中的商品收藏的数组
-    let collect=wx.getStorageSync("collect")||[];
+    let collect = wx.getStorageSync("collect") || [];
     // 2 判断当前商品是否被收藏
-    let isCollect=collect.some(v=>v.goods_id===this.GoodsInfo.goods_id);
+    let isCollect = collect.some(v => v.goods_id === this.GoodsInfo.goods_id);
     this.setData({
-      goodsObj:{
-        goods_name:this.GoodsInfo.goods_name,
-        goods_price:this.GoodsInfo.goods_price,
+      goodsObj: {
+        goods_name: this.GoodsInfo.goods_name,
+        goods_price: this.GoodsInfo.goods_price,
         // iphone部分手机 不识别 webp图片格式
         // 最好找到后台 让他进行修改
         // 临时自己改 确保后台存在 1.webp => 1.jpg
-        goods_introduce:goodsObj.goods_introduce.replace(/\.webp/g,'.jpg'),
-        pics:goodsObj.pics
+        goods_introduce: goodsObj.goods_introduce.replace(/\.webp/g, '.jpg'),
+        pics: goodsObj.pics
       },
       isCollect
     })
   },
   // 点击轮播图 放大预览
-  handlePrevewImage(e){
+  handlePrevewImage(e) {
     // 1 先构造要预览的图片数组
-    const urls=this.GoodsInfo.pics.map(v=>v.pics_mid);
+    const urls = this.GoodsInfo.pics.map(v => v.pics_mid);
     // 2 接收传递过来的图片url
-    const current=e.currentTarget.dataset.url;
+    const current = e.currentTarget.dataset.url;
     wx.previewImage({
       current, // 当前显示图片的http链接
       urls // 需要预览的图片http链接列表
     });
   },
   // 点击 加入购物车
-  handleCartAdd(){
-    // 1 获取缓存中的购物车 数组
-    let cart=wx.getStorageSync("cart")||[];
-    // 2 判断 商品对象是否存在于购物车数组中
-    let index=cart.findIndex(v=>v.goods_id===this.GoodsInfo.goods_id);
-    if(index===-1){
-      // 3 不存在 第一次添加
-      this.GoodsInfo.num=1;
-      this.GoodsInfo.checked=true;
-      cart.push(this.GoodsInfo);
-    }else{
-      // 4 已经存在购物车数据 执行 num++
-      cart[index].num++;
+  async handleCartAdd() {
+    try {
+      const userinfo = await request({ url: '/user/userInfo' });
+      if (!userinfo) {
+        wx.showToast({
+          title: '请登录',
+          icon: 'none',
+          mask: true
+        });
+        return;
+      }
+    } catch (err) {
+      wx.showToast({
+        title: '请登录',
+        icon: 'none',
+        mask: true
+      });
+      return;
     }
-    // 5 把购物车重新添加回缓存中
-    wx.setStorageSync("cart", cart);
-    // 6 弹窗提示
-    wx.showToast({
-      title: '加入成功',
-      icon: 'success',
-      // true 防止用户 手抖 疯狂点击按钮 
-      mask: true
-    });
+
+    const userId = userinfo.id;
+    const bookId = this.GoodsInfo.goods_id;
+
+    try {
+      const response = await request({ url: '/shopcar', method: 'POST', data: { userId, bookId, num: 1 } });
+      if (response === 'success') {
+        wx.showToast({
+          title: '加入成功',
+          icon: 'success',
+          mask: true
+        });
+        return;
+      }
+      wx.showToast({
+        title: '加入失败',
+        icon: 'none',
+        mask: true
+      });
+    } catch (e) {
+      wx.showToast({
+        title: '加入失败',
+        icon: 'none',
+        mask: true
+      });
+    }
+
+
+    // // 1 获取缓存中的购物车 数组
+    // let cart=wx.getStorageSync("cart")||[];
+    // // 2 判断 商品对象是否存在于购物车数组中
+    // let index=cart.findIndex(v=>v.goods_id===this.GoodsInfo.goods_id);
+    // if(index===-1){
+    //   // 3 不存在 第一次添加
+    //   this.GoodsInfo.num=1;
+    //   this.GoodsInfo.checked=true;
+    //   cart.push(this.GoodsInfo);
+    // }else{
+    //   // 4 已经存在购物车数据 执行 num++
+    //   cart[index].num++;
+    // }
+    // // 5 把购物车重新添加回缓存中
+    // wx.setStorageSync("cart", cart);
+    // // 6 弹窗提示
+    // wx.showToast({
+    //   title: '加入成功',
+    //   icon: 'success',
+    //   // true 防止用户 手抖 疯狂点击按钮 
+    //   mask: true
+    // });
   },
   // 点击 商品收藏图标
-  handleCollect(){
-    let isCollect=false;
+  handleCollect() {
+    let isCollect = false;
     // 1 获取缓存中的商品收藏数组
-    let collect=wx.getStorageSync("collect")||[];
+    let collect = wx.getStorageSync("collect") || [];
     // 2 判断该商品是否被收藏过
-    let index=collect.findIndex(v=>v.goods_id===this.GoodsInfo.goods_id);
+    let index = collect.findIndex(v => v.goods_id === this.GoodsInfo.goods_id);
     // 3 当index!=-1表示 已经收藏过
-    if(index!==-1){
+    if (index !== -1) {
       // 能找到 已经收藏过了 在数组中删除该商品
-      collect.splice(index,1);
-      isCollect=false;
+      collect.splice(index, 1);
+      isCollect = false;
       wx.showToast({
         title: '取消成功',
         icon: 'success',
         mask: true
       });
-    }else{
+    } else {
       // 没有收藏过
       collect.push(this.GoodsInfo);
-      isCollect=true;
+      isCollect = true;
       wx.showToast({
         title: '收藏成功',
         icon: 'success',
@@ -152,5 +197,5 @@ Page({
       isCollect
     })
   }
-  
+
 })
