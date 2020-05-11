@@ -1,12 +1,20 @@
-
 // import config from '../config';
-const {request, userRequest} = require('../request/index')
+const apiRequest = require("../request/index");
 
 /** 用户管理 */
 // 从微信获取openid
-const getOpenid = (code) => userRequest({url: `/mini/getOpenid?code=${code}`})
+const getOpenid = code => {
+  console.log(code);
+  console.log(apiRequest);
+  return apiRequest.userRequest({ url: `/mini/getOpenid?code=${code}` });
+};
 // 创建用户,用户授权时使用
-const insertUser = (user) => userRequest({url: '/user/insertUser', data: user, method: 'POST'})
+const insertUser = user =>
+  apiRequest.userRequest({
+    url: "/user/insertUser",
+    data: user,
+    method: "POST"
+  });
 // // 获取用户信息
 // const getUserInfo = (openid) => httpServer.get({ url: `/user/userInfo` });
 // // 更新用户信息
@@ -44,7 +52,7 @@ const insertUser = (user) => userRequest({url: '/user/insertUser', data: user, m
 
 export {
   getOpenid,
-  insertUser,
+  insertUser
   // updateUser,
   // getUserInfo,
   // getAccessToken,
@@ -64,5 +72,4 @@ export {
   // getCustomizeById,
   // getOrderLogistics,
   // payOrder,
-}
-
+};

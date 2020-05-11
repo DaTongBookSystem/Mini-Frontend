@@ -72,3 +72,32 @@ const getNewToken = () => {
     })
   })
 }
+
+export const userRequest = (params, tokenNeeded = true) => {
+  console.log('come in ....')
+  let header={...params.header};
+  if(tokenNeeded) {
+    header["Authorization"]=wx.getStorageSync("token");
+  }
+  
+  return new Promise((resolve,reject)=>{
+    wx.request({
+      ...params,
+      header:header,
+      url:baseUrl+params.url,
+      success:(result)=>{
+          resolve(result.data);
+      },
+      fail:(err)=>{
+          reject(err);
+      },
+      complete:()=> {
+        ajaxTime--;
+        if(ajaxTime===0){
+          // 关闭正在等待的图标
+          wx.hideLoading()
+        }
+      }
+    });
+})
+} 
