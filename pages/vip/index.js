@@ -8,9 +8,13 @@ Page({
     totalPrice:0,
     totalNum:0,
     userinfo:{},
-    vip:'0'
+    vip: 0,
+    vipList: []
   },
-  onShow(){
+  async onLoad() {
+  },
+  async onShow(){
+    await this.getVipList(); 
     // 获取用户信息
     const userinfo=wx.getStorageSync("userinfo");
     // 1 获取缓存中的收货地址
@@ -92,7 +96,7 @@ Page({
 
   async testPay() {
     const data = await request({url: '/wxapi/wxpayVip', method:"POST", data: {
-      vipType: 5
+      vipTypeId: this.data.vip
     }}, true)
     console.log(`wx pay:`, data);
     const pay = {
@@ -107,7 +111,22 @@ Page({
     await requestPayment(pay);
     // 7 查询后台 订单状态
     await showToast({title:"支付成功"});
+  },
 
+  async getVipList() {
+    const data = await request({url: '/user/vip/list', method: 'GET'})
+    console.log(`getVipList`, data)
+    this.setData({
+      vipList: data
+    }) 
+  },
+
+  async buyVip(e) {
+    console.log(e);
+    this.setData({
+      vip: e.currentTarget.dataset.id
+    })
   }
+
 
 })
