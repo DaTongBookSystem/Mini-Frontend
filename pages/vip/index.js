@@ -3,36 +3,35 @@ import regeneratorRuntime from '../../lib/runtime/runtime';
 import { request } from "../../request/index.js";
 Page({
   data:{
-    address:{},
-    cart:[],
-    totalPrice:0,
-    totalNum:0,
+    // address:{},
+    // cart:[],
+    // totalPrice:0,
+    // totalNum:0,
     userinfo:{},
-    vip:'0'
   },
   onShow(){
     // 获取用户信息
     const userinfo=wx.getStorageSync("userinfo");
-    // 1 获取缓存中的收货地址
-    const address=wx.getStorageSync("address");
-    // 1 获取缓存中的购物车数据
-    let cart=wx.getStorageSync("cart")||[];
-    // 过滤后的购物车数组
-    cart=cart.filter(v=>v.checked);
-    this.setData({address});
+    // // 1 获取缓存中的收货地址
+    // const address=wx.getStorageSync("address");
+    // // 1 获取缓存中的购物车数据
+    // let cart=wx.getStorageSync("cart")||[];
+    // // 过滤后的购物车数组
+    // cart=cart.filter(v=>v.checked);
+    // this.setData({address});
 
-      // 1 总价格 总数量
-      let totalPrice=0;
-      let totalNum=0;
-      cart.forEach(v => {
-          totalPrice+=v.num*v.goods_price;
-          totalNum+=v.num;
-      })
+    //   // 1 总价格 总数量
+    //   let totalPrice=0;
+    //   let totalNum=0;
+    //   cart.forEach(v => {
+    //       totalPrice+=v.num*v.goods_price;
+    //       totalNum+=v.num;
+    //   })
       this.setData({
-        cart,
-        totalPrice,
-        totalNum,
-        address,
+        // cart,
+        // totalPrice,
+        // totalNum,
+        // address,
         userinfo
       });
   },
@@ -43,9 +42,9 @@ Page({
     const token=wx.getStorageSync("token");
     // 2 判断
     if(!token){
-      wx.navigateTo({
-        url: '/pages/auth/index',
-      });
+      // wx.navigateTo({
+      //   url: '/pages/auth/index',
+      // });
       return;
     }
     // // 3 创建订单

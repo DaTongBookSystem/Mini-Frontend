@@ -148,8 +148,8 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/vip/index",
+					"id": 13,
+					"name": "会员中心",
 					"pathName": "pages/vip/index",
 					"query": "categoryId=1",
 					"scene": null
