@@ -64,37 +64,76 @@
   3 经过以上的验证 跳转到 支付页面！
 */
 
-import { getSetting,chooseAddress,openSetting,showModal,showToast } from "../../utils/asyncWx.js";
+import { getSetting, chooseAddress, openSetting, showModal, showToast } from "../../utils/asyncWx.js";
 import regeneratorRuntime from '../../lib/runtime/runtime';
+import { request } from '../../request/index.js';
+
 Page({
-  data:{
-    address:{},
-    cart:[],
-    allChecked:false,
-    totalPrice:0,
-    totalNum:0
+  data: {
+    userInfo: {},
+    address: {},
+    cart: [],
+    allChecked: false,
+    totalPrice: 0,
+    totalNum: 0
   },
-  onShow(){
+  async onShow() {
     // 1 获取缓存中的收货地址
-    const address=wx.getStorageSync("address");
+    const address = wx.getStorageSync("address");
     // 1 获取缓存中的购物车数据
-    const cart=wx.getStorageSync("cart")||[];
-    this.setData({address});
-    this.setCart(cart);
+    const cart = wx.getStorageSync("cart") || [];
+    this.setData({ address });
+    // this.setCart(cart);
+
+    try {
+      const userInfo = await request({ url: '/user/userInfo' });
+      this.setData({ address });
+      if (userInfo && userInfo.id) {
+        const carts = await request({ url: '/shopcar/list?userId=' + userInfo.id });
+        if (carts && carts.length > 0) {
+          const books = await Promise.all(carts.map(cart => request({ url: '/book/' + cart.bookId })));
+          for (let i = 0; i < carts.length; i++) {
+            const cart = carts[i]
+            const book = books.find(book => book.id === cart.bookId);
+            cart.book = book;
+          }
+          this.setCart(
+            carts.map(c => {
+              return {
+                goods_id: c.bookId,
+                goods_name: c.book.name,
+                goods_price: c.book.value,
+                goods_small_logo: c.book.mainImgUrl,
+                num: c.num,
+                userId: c.userId
+              }
+            })
+          );
+        }
+
+      }
+    } catch (e) {
+      wx.showToast({
+        title: '请登录',
+        icon: 'none',
+        mask: true
+      });
+    }
+
   },
   // 点击 收货地址
-  async handleChooseAddress(){
+  async handleChooseAddress() {
     try {
       // 1 获取 权限状态
-      const res1=await getSetting();
-      const scopeAddress =res1.authSetting["scope.address"];
+      const res1 = await getSetting();
+      const scopeAddress = res1.authSetting["scope.address"];
       // 2 判断 权限状态
-      if(scopeAddress===false){
+      if (scopeAddress === false) {
         await openSetting();
       }
       // 4 调用获取收获地址的 api
-      let address=await chooseAddress();
-      address.all=address.provinceName+address.cityName+address.countyName+address.detailInfo;
+      let address = await chooseAddress();
+      address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo;
       // 5 存入到缓存中
       wx.setStorageSync("address", address);
     } catch (error) {
@@ -102,35 +141,36 @@ Page({
     }
   },
   // 商品的选中
-  handleItemChange(e){
+  handleItemChange(e) {
     // 1 获取被修改的商品的id
-    const goods_id=e.currentTarget.dataset.id;
+    const goods_id = e.currentTarget.dataset.id;
     // 2 获取购物车数组
-    let {cart}=this.data;
+    let { cart } = this.data;
     // 3 找到被修改的商品对象
-    let index=cart.findIndex(v=>v.goods_id===goods_id);
+    let index = cart.findIndex(v => v.goods_id === goods_id);
     // 4 选中状态取反
-    cart[index].checked=!cart[index].checked;
-    
+    cart[index].checked = !cart[index].checked;
+
     this.setCart(cart);
 
   },
   // 设置购物车状态 同时 重新计算 底部工具栏的数据 全选 总价格 购买的数量
-  setCart(cart){
-    let allChecked=true;
+  setCart(cart) {
+    cart = cart.filter(c => c.num > 0)
+    let allChecked = true;
     // 1 总价格 总数量
-    let totalPrice=0;
-    let totalNum=0;
+    let totalPrice = 0;
+    let totalNum = 0;
     cart.forEach(v => {
-      if(v.checked){
-        totalPrice+=v.num*v.goods_price;
-        totalNum+=v.num;
-      }else{
-        allChecked=false;
+      if (v.checked) {
+        totalPrice += v.num * v.goods_price;
+        totalNum += v.num;
+      } else {
+        allChecked = false;
       }
     })
     // 判断数组是否为空
-    allChecked=cart.length!=0?allChecked:false;
+    allChecked = cart.length != 0 ? allChecked : false;
     this.setData({
       cart,
       totalPrice,
@@ -140,50 +180,61 @@ Page({
     wx.setStorageSync("cart", cart);
   },
   // 商品的全选功能
-  handleItemAllCheck(){
+  handleItemAllCheck() {
     // 1 获取data中的数据
-    let {cart,allChecked}=this.data;
+    let { cart, allChecked } = this.data;
     // 2 修改值
-    allChecked=!allChecked;
+    allChecked = !allChecked;
     // 3 循环修改cart数组中的商品选中状态
-    cart.forEach(v=>v.checked=allChecked);
+    cart.forEach(v => v.checked = allChecked);
     // 4 把修改后的值 填充回data或者缓存中
     this.setCart(cart);
   },
   // 商品数量的编辑功能
-  async handleItemNumEdit(e){
+  async handleItemNumEdit(e) {
     // 1 获取传递过来的参数
-    const {operation,id}=e.currentTarget.dataset;
+    const { operation, id } = e.currentTarget.dataset;
     // 2 获取购物车数组
-    let {cart}=this.data;
+    let { cart } = this.data;
     // 3 找到需要修改的商品的索引
-    const index=cart.findIndex(v=>v.goods_id===id);
+    const index = cart.findIndex(v => v.goods_id === id);
+    const c = cart[index];
     // 4 判断是否要执行删除
-    if(cart[index].num===1&&operation===-1){
+    if (cart[index].num === 1 && operation === -1) {
       // 4.1 弹窗提示
-      const res=await showModal({ content: "您是否要删除？"});
-      if (res.confirm) {
-        cart.splice(index,1);
-        this.setCart(cart);
-      } 
-    }else{
-    // 4 进行修改数量
-    cart[index].num+=operation;
-    // 5 设置回缓存和data中
-    this.setCart(cart);
+      const res = await showModal({ content: "您是否要删除？" });
+      if (!res.confirm) {
+        return
+      }
     }
+    // 4 进行修改数量
+    cart[index].num += operation;
+    console.log(c);
+    const response = await request({ url: '/shopcar', method: 'PUT',  data: { userId: c.userId, bookId: c.goods_id, newNum: cart[index].num } });
+    if (response === 'success') {
+      // 5 设置回缓存和data中
+      this.setCart(cart);
+    } else {
+      wx.showToast({
+        title: '系统内部异常',
+        icon: 'none',
+        mask: true
+      });
+    }
+
+
   },
   // 点击 结算
-  async handlePay(){
+  async handlePay() {
     // 1 判断收货地址
-    const {address,totalNum}=this.data;
-    if(!address.userName){
-      await showToast({title:"您还没有选择收获地址"});
+    const { address, totalNum } = this.data;
+    if (!address.userName) {
+      await showToast({ title: "您还没有选择收获地址" });
       return;
     }
     // 2 判断用户有没有选购商品
-    if(totalNum===0){
-      await showToast({title:"您还没有选购商品"});
+    if (totalNum === 0) {
+      await showToast({ title: "您还没有选购商品" });
       return;
     }
     // 3 跳转到 支付页面

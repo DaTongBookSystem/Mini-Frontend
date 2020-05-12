@@ -8,11 +8,8 @@ Page({
     // totalPrice:0,
     // totalNum:0,
     userinfo:{},
-<<<<<<< HEAD
-=======
     vip: 0,
     vipList: []
->>>>>>> 640279e2461a662888620658e605ec9f20f7debb
   },
   async onLoad() {
   },

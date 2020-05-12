@@ -2,8 +2,8 @@ const Api = require('../service/api.service');
 // 同时发送异步代码的次数
 let ajaxTime = 0;
 
-const baseUrl = 'http://localhost:8002';
-// const baseUrl = 'https://test.zmcm.vip';
+// const baseUrl = 'http://localhost:8002';
+const baseUrl = 'https://test.zmcm.vip';
 
 
 export const request = (params, tokenNeeded = true) => {
@@ -27,6 +27,7 @@ export const request = (params, tokenNeeded = true) => {
               resolve(result);
             });
           }).catch(err => {
+            console.log(err);
             reject(err);
           })
         } else {
