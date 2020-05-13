@@ -18,8 +18,15 @@
   7 删除后的购物车数据 填充回缓存
   8 再跳转页面
 */
-import { getSetting, chooseAddress, openSetting, showModal, showToast, requestPayment } from "../../utils/asyncWx.js";
-import regeneratorRuntime from '../../lib/runtime/runtime';
+import {
+  getSetting,
+  chooseAddress,
+  openSetting,
+  showModal,
+  showToast,
+  requestPayment
+} from "../../utils/asyncWx.js";
+import regeneratorRuntime from "../../lib/runtime/runtime";
 import { request } from "../../request/index.js";
 Page({
   data: {
@@ -31,6 +38,7 @@ Page({
   onShow() {
     // 1 获取缓存中的收货地址
     const address = wx.getStorageSync("address");
+    console.log(`address`, address);
     // 1 获取缓存中的购物车数据
     let cart = wx.getStorageSync("cart") || [];
     console.log(cart);
@@ -45,7 +53,7 @@ Page({
     cart.forEach(v => {
       totalPrice += v.num * v.goods_price;
       totalNum += v.num;
-    })
+    });
     this.setData({
       cart,
       totalPrice,
@@ -57,11 +65,11 @@ Page({
   async handleOrderPay() {
     try {
       // 1 判断缓存中有没有token
-      const token = wx.getStorageSync("token");
+      const userInfo = wx.getStorageSync("userinfo");
       // 2 判断
-      if (!token) {
+      if (!userInfo.token) {
         wx.navigateTo({
-          url: '/pages/auth/index',
+          url: "/pages/auth/index"
         });
         return;
       }
@@ -73,21 +81,75 @@ Page({
       const consignee_addr = this.data.address.all;
       const cart = this.data.cart;
       let goods = [];
-      cart.forEach(v => goods.push({
-        goods_id: v.goods_id,
-        goods_number: v.num,
-        goods_price: v.goods_price
-      }))
-      const orderParams = { order_price, consignee_addr, goods };
+      cart.forEach(v =>
+        goods.push({
+          goods_id: v.goods_id,
+          goods_number: v.num,
+          goods_price: v.goods_price,
+          goods_name: v.goods_name,
+          goods_small_logo: v.goods_small_logo
+        })
+      );
+      const {
+        telNumber,
+        cityName,
+        countyName,
+        postalCode,
+        provinceName,
+        userName
+      } = this.data.address;
+      const orderParams = {
+        totalPrice: order_price,
+        addressInfo: {
+          address: consignee_addr,
+          telNumber,
+          cityName,
+          countyName,
+          postalCode,
+          provinceName,
+          userName
+        },
+        details: goods
+      };
+      console.log(`orderParams`, orderParams);
+      
       // 4 准备 发送请求 创建订单 获取订单编号
-      const { order_number } = await request({ url: "/my/orders/create", method: "POST", data: orderParams });
+      const { id } = await request({
+        url: "/order/create",
+        method: "POST",
+        data: orderParams,
+      }, true);
       // 5 发起 预支付接口
-      const { pay } = await request({ url: "/my/orders/req_unifiedorder", method: "POST", data: order_number });
+      const data = await request({
+        url: "/wxapi/wxpay",
+        method: "POST",
+        data: {
+          orderId: id
+        }
+      });
+      console.log(`发起 预支付接口`, data)
+      const pay = {
+        timeStamp: data.timeStamp,
+        nonceStr: data.nonceStr,
+        // package: data.package,
+        package: 'prepay_id=' + data.prepayId,
+        signType: 'MD5',
+        paySign: data.paySign,
+      }
       // 6 发起 微信支付
       await requestPayment(pay);
-      // 7 查询后台 订单状态
-      const res = await request({ url: "/my/orders/chkOrder", method: "POST", data: order_number });
+      
+      // 7 支付成功 更新订单状态
+      await request({
+        url: "/order/updateOrder",
+        method: "PUT",
+        data: {
+          status: 2
+        }
+      }, true)
+
       await showToast({ title: "支付成功" });
+      return;
       // 8 手动删除缓存中 已经支付了的商品
       let newCart = wx.getStorageSync("cart");
       newCart = newCart.filter(v => !v.checked);
@@ -97,10 +159,16 @@ Page({
         url: "/pages/order/index"
       });
     } catch (error) {
+      await request({
+        url: "/order/updateOrder",
+        method: "PUT",
+        data: {
+          status: 1
+        }
+      }, true)
       await showToast({ title: "支付失败" });
       console.log(error);
+      
     }
   }
-})
-
-
+});

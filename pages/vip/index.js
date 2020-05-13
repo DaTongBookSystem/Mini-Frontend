@@ -95,6 +95,7 @@ Page({
   },
 
   async testPay() {
+  
     const data = await request({url: '/wxapi/wxpayVip', method:"POST", data: {
       vipTypeId: this.data.vip
     }}, true)
@@ -108,9 +109,16 @@ Page({
       paySign: data.paySign,
     }
     // 6 发起 微信支付
-    await requestPayment(pay);
-    // 7 查询后台 订单状态
+    const result = await requestPayment(pay);
+    console.log(result)
+    if (result.errMsg && result.errMsg === 'requestPayment:ok') {
+      await request({url: '/user/updateUserPayVip', method: 'POST', data: {
+        vipTypeId: this.data.vip
+      }}, true);
+          // 7 查询后台 订单状态
     await showToast({title:"支付成功"});
+    }
+
   },
 
   async getVipList() {
