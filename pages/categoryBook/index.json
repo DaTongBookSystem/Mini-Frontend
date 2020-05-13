@@ -2,5 +2,5 @@
   "usingComponents": {
     "Searchinput":"../../components/Searchinput/Searchinput"
   },
-  "navigationBarTitleText": "分类"
+  "navigationBarTitleText": "图书分类"
 }

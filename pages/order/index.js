@@ -24,34 +24,39 @@ Page({
     tabs:[
       {
         id:0,
-        Value:"全部",
+        Value:"待付款",
         isActive:true
       },
       {
         id:1,
-        Value:"待付款",
+        Value:"配送中",
         isActive:false
       },
       {
         id:2,
-        Value:"待发货",
+        Value:"借阅中",
         isActive:false
       },
       {
         id:3,
-        Value:"退款/退货",
+        Value:"待回收",
+        isActive:false
+      },
+      {
+        id:4,
+        Value:"历史订单",
         isActive:false
       }
     ]
   },
   onShow(options){
     const token=wx.getStorageSync("token");
-    if(!token){
-      wx.navigateTo({
-        url: '/pages/auth/index'
-      });
-      return;
-    }
+    // if(!token){
+    //   wx.navigateTo({
+    //     url: '/pages/auth/index'
+    //   });
+    //   return;
+    // }
     // 1 获取当前的小程序的页面栈-数组 长度最大是10页面
     let pages =  getCurrentPages();
     // 2 数组中 索引最大的页面就是当前页面
