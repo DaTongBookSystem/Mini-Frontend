@@ -9,15 +9,19 @@ page {
   padding: 10rpx 10rpx;
 }
 .cates .goods_group .goods_list navigator {
+  background-color: #fff;
   float: left;
   width: 50%;
+  border: 10rpx solid #dedede;
+  border-radius: 20rpx;
 }
-.cates .goods_group .goods_list navigator:nth-child(even) {
-  border-left: 20rpx solid #dedede;
+.cates .goods_group .goods_list navigator .goods_img_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .cates .goods_group .goods_list navigator .goods_img_wrap image {
   width: 100%;
-  border-radius: 20rpx;
 }
 .cates .goods_group .goods_list navigator .goods_info_wrap {
   display: flex;

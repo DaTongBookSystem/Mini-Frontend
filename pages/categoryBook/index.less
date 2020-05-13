@@ -8,15 +8,21 @@ page{
                 padding: 10rpx 10rpx;
                 .goods_list{
                     navigator{
+                        background-color: #fff;
                         float: left;
                         width: 50%;
-                        &:nth-child(even){
-                            border-left: 20rpx solid #dedede;
-                        }
+                        // border-top: 20rpx solid #dedede;
+                        border: 10rpx solid #dedede;
+                        border-radius: 20rpx;
+                        // &:nth-child(even){
+                        //     border-left: 20rpx solid #dedede;
+                        // }
                     .goods_img_wrap{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                         image{
                             width: 100%;
-                            border-radius: 20rpx;
                         } 
                     }
                     .goods_info_wrap{
