@@ -1,2 +1,26 @@
-<!--pages/freight/freight.wxml-->
-<text>pages/freight/freight.wxml</text>
+    <!-- 运费券类型 -->
+    <view class="vip_wrap">
+        <view  class="vip_main">
+            <!-- 4种运费券 -->
+            <view class="vip_kind">
+                <view class="vip_type {{item.id === 1 ? '' : 'vip_type1'}}" wx:for-items="{{vipList}}" bindtap="buyVip" data-id="{{item.id}}">
+                        <view class="freight_name">1张</view>
+                        <view class="freight_price">￥10</view>
+                </view>
+            </view>
+            <!-- 运费券剩余 -->
+            <view  class="freight_remaining">
+                        <view class="freight_remaining">我的运费券剩余：</view>
+                        <view class="freight_remaining">100 张</view>
+            </view>
+        </view>
+    </view>
+
+<!-- 底部工具栏 -->
+<view class="footer_tool">
+    <!-- 支付 -->
+    <view class="order_pay_wrap" bindtap="testPay">
+        <!-- 支付({{totalNum}}) -->
+        支付
+    </view>
+</view>

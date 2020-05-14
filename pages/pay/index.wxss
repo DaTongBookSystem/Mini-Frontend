@@ -64,6 +64,14 @@ page {
   justify-content: center;
   align-items: center;
 }
+.cart_content .freight_remaining {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
 .footer_tool {
   position: fixed;
   bottom: 0;
