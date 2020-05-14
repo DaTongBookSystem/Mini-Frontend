@@ -38,19 +38,23 @@
                 <view class="orders_content">
                     <navigator url="/pages/order/index?type=1">
                         <view class="iconfont icon-quanbudingdan"></view>
-                        <view class="order_name">全部订单</view>
-                    </navigator>
-                    <navigator url="/pages/order/index?type=2">
-                        <view class="iconfont icon-tubiaozhizuomoban"></view>
                         <view class="order_name">待付款</view>
                     </navigator>
-                    <navigator url="/pages/order/index?type=3">
+                    <navigator url="/pages/order/index?type=2">
                         <view class="iconfont icon-daishouhuo"></view>
-                        <view class="order_name">待收货</view>
+                        <view class="order_name">配送中</view>
+                    </navigator>
+                    <navigator url="/pages/order/index?type=3">
+                        <view class="iconfont icon-tubiaozhizuomoban"></view>
+                        <view class="order_name">借阅中</view>
                     </navigator>
                     <navigator url="/pages/order/index?type=4">
                         <view class="iconfont icon-tuikuan"></view>
-                        <view class="order_name">退款/退货</view>
+                        <view class="order_name">待回收</view>
+                    </navigator>
+                        <navigator url="/pages/order/index?type=5">
+                        <view class="iconfont icon-tuikuan"></view>
+                        <view class="order_name">历史订单</view>
                     </navigator>
                 </view>
             </view>
