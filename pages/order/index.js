@@ -23,27 +23,27 @@ Page({
     orders:[],
     tabs:[
       {
-        id:0,
+        id:1,
         Value:"待付款",
         isActive:true
       },
       {
-        id:1,
+        id:2,
         Value:"配送中",
         isActive:false
       },
       {
-        id:2,
+        id:3,
         Value:"借阅中",
         isActive:false
       },
       {
-        id:3,
+        id:4,
         Value:"待回收",
         isActive:false
       },
       {
-        id:4,
+        id:5,
         Value:"历史订单",
         isActive:false
       }
@@ -66,12 +66,15 @@ Page({
     // 4 激活选中页面标题 当 type=1 index=0
     this.changeTitleByIndex(type-1);
     this.getOrders(type);
+
   },
   // 获取订单列表的方法
   async getOrders(type){
-    const res=await request({url:"/my/orders/all",data:{type}})
+    
+    const res = await request({url:`/order/getOrderLists/${type}`,method: 'GET'}, true)
+    console.log(res);
     this.setData({
-      orders:res.orders.map(v=>({...v,create_time_cn:(new Date(v.create_time*1000).toLocaleString())}))
+      orders:res.map(v=>({...v, created_at: new Date(v.created_at).toLocaleString()}))
     })
   },
   // 根据标题索引来激活选中 标题数组

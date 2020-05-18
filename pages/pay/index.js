@@ -35,7 +35,7 @@ Page({
     totalPrice: 0,
     totalNum: 0
   },
-  onShow() {
+  async onShow() {
     // 1 获取缓存中的收货地址
     const address = wx.getStorageSync("address");
     console.log(`address`, address);
@@ -60,7 +60,14 @@ Page({
       totalNum,
       address
     });
+    await this.getUserInfo()
   },
+
+  async getUserInfo() {
+    const result = await request({url: '/user/userInfo', method: 'GET'}, true);
+    console.log(result);
+  },
+
   // 点击 支付
   async handleOrderPay() {
     try {
