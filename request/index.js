@@ -2,16 +2,23 @@ const Api = require('../service/api.service');
 // 同时发送异步代码的次数
 let ajaxTime = 0;
 
-const baseUrl = 'http://localhost:8002';
-// const baseUrl = 'https://test.zmcm.vip';
+// const baseUrl = 'http://localhost:8002';
+const baseUrl = 'https://test.zmcm.vip';
 
 
 export const request = (params, tokenNeeded = true) => {
+  ajaxTime++;
   let header = {};
   if (tokenNeeded) {
     const userInfo = wx.getStorageSync("userinfo");
     header["authorization"] = 'Bearer ' + userInfo.token;
   }
+
+  // 显示加载中 效果
+  wx.showLoading({
+    title: "加载中",
+    mask: true
+  });
 
   return new Promise((resolve, reject) => {
     wx.request({

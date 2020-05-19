@@ -23,7 +23,6 @@ Page({
     
     this.getSwiperList();
     this.getCateList();
-    this.getCateList();
     this.getFloorList();
 
   },
