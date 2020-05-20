@@ -7,14 +7,18 @@ Page({
     // cart:[],
     // totalPrice:0,
     // totalNum:0,
-    userinfo:{},
+    userinfo:{
+      trafficTicketCount: 0
+    },
+    trafficTicketCount: 0,
     vip: 0,
-    vipList: []
+    couponList: []
   },
   async onLoad() {
   },
   async onShow(){
-    await this.getVipList(); 
+    await this.getFreightCouponList(); 
+    await this.getUserInfo();
     // 获取用户信息
     const userinfo=wx.getStorageSync("userinfo");
     // // 1 获取缓存中的收货地址
@@ -121,12 +125,20 @@ Page({
 
   },
 
-  async getVipList() {
-    const data = await request({url: '/user/vip/list', method: 'GET'})
+  async getFreightCouponList() {
+    const data = await request({url: '/user/freightCoupon/list', method: 'GET'}, true)
     console.log(`getVipList`, data)
     this.setData({
-      vipList: data
+      couponList: data
     }) 
+  },
+
+  async getUserInfo() {
+    const userinfo = await request({url: '/user/userInfo', method: 'GET'}, true);
+    console.log(`userinfo`, userinfo);
+    this.setData({
+      trafficTicketCount: userinfo.trafficTicketCount
+    })
   },
 
   async buyVip(e) {
