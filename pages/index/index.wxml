@@ -1,13 +1,14 @@
 <view class="js_index">
-  <!-- 搜索框 开始 -->
-  <Searchinput></Searchinput>
-  <!-- 搜索框 结束 -->
 
   <!-- 置顶图片开始 -->
   <view class="index_zhiding">
   <image mode="widthFix" src="https://zmcm.oss-cn-zhangjiakou.aliyuncs.com/top.jpg"></image>
   </view>
   <!-- 置顶图片结束 -->
+
+  <!-- 搜索框 开始 -->
+  <Searchinput></Searchinput>
+  <!-- 搜索框 结束 -->
 
   <!-- 轮播图 开始 -->
   <view class="index_swiper">
