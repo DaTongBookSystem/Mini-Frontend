@@ -27,7 +27,7 @@ page {
 }
 .vip_wrap .vip_main .vip_kind .vip_type .freight_price {
   font-size: 35rpx;
-  color: var(--themeColor);
+  color: #eb4450;
   padding: 10rpx 0;
 }
 .vip_wrap .vip_main .vip_kind .vip_type1 {
@@ -53,7 +53,7 @@ page {
 }
 .order_pay_wrap {
   flex: 3;
-  background-color: var(--themeColor);
+  background-color: #eb4450;
   color: #fff;
   font-size: 32rpx;
   font-weight: 600;

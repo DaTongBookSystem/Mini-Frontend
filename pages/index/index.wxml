@@ -1,5 +1,4 @@
 <view class="js_index">
-
   <!-- 置顶图片开始 -->
   <view class="index_zhiding">
   <image mode="widthFix" src="https://zmcm.oss-cn-zhangjiakou.aliyuncs.com/top.jpg"></image>
@@ -66,7 +65,7 @@
     >
       <!-- 标题 -->
       <view class="floor_title">
-        <image mode="widthFix"mode="{{index1===0?'widthFix':'scaleToFill'}}" src="{{item1.categoryDetail.homeImgUrl}}">
+        <image mode="widthFix" mode="scaleToFill" src="{{item1.categoryDetail.homeImgUrl}}">
         </image>
       </view>
       <!-- 内容 -->

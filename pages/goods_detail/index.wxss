@@ -12,7 +12,7 @@ page {
   padding: 15rpx;
   font-size: 32rpx;
   font-weight: 600;
-  color: var(--themeColor);
+  color: #eb4450;
 }
 .goods_name_row {
   border-top: 5rpx solid #dedede;

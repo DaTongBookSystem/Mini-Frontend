@@ -21,7 +21,7 @@ page {
 .cart_content .cart_title {
   padding: 20rpx;
   font-size: 36rpx;
-  color: var(--themeColor);
+  color: dodgerblue;
   border-top: 1rpx solid currentColor;
   border-bottom: 1rpx solid currentColor;
 }
@@ -63,7 +63,7 @@ page {
   justify-content: space-between;
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .goods_price {
-  color: var(--themeColor);
+  color: #eb4450;
   font-size: 34rpx;
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .cart_num_tool {
@@ -106,13 +106,13 @@ page {
   text-align: right;
 }
 .footer_tool .total_price_wrap .total_price .total_price_text {
-  color: var(--themeColor);
+  color: #eb4450;
   font-size: 34rpx;
   font-weight: 600;
 }
 .footer_tool .order_pay_wrap {
   flex: 3;
-  background-color: var(--themeColor);
+  background-color: #eb4450;
   color: #fff;
   font-size: 32rpx;
   font-weight: 600;

@@ -1,5 +1,4 @@
 <view class="cates">
-    <Searchinput></Searchinput>
             <view class="goods_group"
             >
                 <view class="goods_list">

@@ -1,5 +1,4 @@
 <view class="cates">
-    <Searchinput></Searchinput> 
     <view class="container" >
     <navigator
      wx:for="{{leftMenuList}}"

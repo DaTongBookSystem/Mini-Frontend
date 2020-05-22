@@ -74,7 +74,7 @@
 					"id": 2,
 					"name": "图书详情",
 					"pathName": "pages/goods_detail/index",
-					"query": "goods_id=43985",
+					"query": "goods_id=4",
 					"scene": null
 				},
 				{
