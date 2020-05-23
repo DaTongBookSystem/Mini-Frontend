@@ -20,6 +20,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    status: 1,
     orders:[],
     tabs:[
       {
@@ -84,7 +85,8 @@ Page({
     tabs.forEach((v,i)=>i==index?v.isActive=true:v.isActive=false);
     // 3 赋值到data中
     this.setData({
-      tabs
+      tabs,
+      status:index+1
     })
   },
   handleTabsItemChange(e){
