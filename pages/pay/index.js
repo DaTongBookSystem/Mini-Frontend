@@ -90,11 +90,11 @@ Page({
       let goods = [];
       cart.forEach(v =>
         goods.push({
-          goods_id: v.goods_id,
-          goods_number: v.num,
-          goods_price: v.goods_price,
-          goods_name: v.goods_name,
-          goods_small_logo: v.goods_small_logo
+          bookId: v.goods_id,
+          bookNum: v.num,
+          bookPrice: v.goods_price,
+          bookName: v.goods_name,
+          bookSmallPic: v.goods_small_logo
         })
       );
       const {
