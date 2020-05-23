@@ -14,7 +14,7 @@
   justify-content: space-between;
 }
 .order_main .order_item .order_price_row .order_price_value {
-  color: var(--themeColor);
+  color: #eb4450;
   font-size: 32rpx;
 }
 .order_main .order_item .order_time_row {
