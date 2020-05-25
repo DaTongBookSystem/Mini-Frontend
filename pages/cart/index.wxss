@@ -1,23 +1,6 @@
 page {
   padding-bottom: 90rpx;
 }
-.revice_address_row .address_btn {
-  padding: 20rpx;
-}
-.revice_address_row .address_btn button {
-  width: 60%;
-}
-.revice_address_row .user_info_row {
-  display: flex;
-  padding: 20rpx;
-}
-.revice_address_row .user_info_row .user_info {
-  flex: 5;
-}
-.revice_address_row .user_info_row .user_phone {
-  flex: 3;
-  text-align: right;
-}
 .cart_content .cart_title {
   padding: 20rpx;
   font-size: 36rpx;

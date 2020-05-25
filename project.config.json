@@ -160,6 +160,13 @@
 					"pathName": "pages/freight/freight",
 					"query": "categoryId=1",
 					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "地址管理",
+					"pathName": "pages/address/address",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

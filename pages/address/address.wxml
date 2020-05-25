@@ -1,1 +1,8 @@
-<text>添加新地址</text>
+<!-- 底部工具栏 -->
+<view class="footer_tool">
+    <!-- 地址 -->
+    <view class="order_pay_wrap" bindtap="testPay">
+        <!-- 地址({{totalNum}}) -->
+        添加新地址
+    </view>
+</view>
