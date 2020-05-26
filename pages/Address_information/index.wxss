@@ -1,0 +1,45 @@
+page {
+  background-color: #ccc;
+}
+.address_wrap {
+  background-color: #fff;
+}
+.address_wrap .name_title {
+  padding: 30rpx;
+}
+.address_wrap .phone_title {
+  padding: 30rpx;
+}
+.address_wrap .region_title {
+  padding: 30rpx;
+}
+.address_wrap .address_title {
+  padding: 30rpx;
+}
+.address_wrap .code_title {
+  padding: 30rpx;
+}
+.address_wrap input {
+  height: 100%;
+  padding: 30rpx;
+}
+.footer_tool {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90rpx;
+  background-color: #fff;
+  display: flex;
+  border-top: 1rpx solid #ccc;
+}
+.order_pay_wrap {
+  flex: 3;
+  background-color: dodgerblue;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

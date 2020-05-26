@@ -1,0 +1,28 @@
+<!-- 地址信息 -->
+            <view class="address_wrap">
+                
+                <view class="name_title">
+                    收货人：<input placeholder="姓名"></input>
+                </view>
+                <view class="phone_title">
+                    手机：<input placeholder="请输入手机号码"></input>
+                </view>
+                <view class="region_title">
+                    地区：<input placeholder="选择地区"></input>
+                </view>
+                <view class="address_title">
+                    地址：<input placeholder="请输入详细地址"></input>
+                </view>
+                <view class="code_title">
+                    邮编：<input placeholder="邮编号码"></input>
+                </view>
+                
+            </view>
+            
+<!-- 底部工具栏 -->
+<view class="footer_tool">
+    <!-- 地址 -->
+    <navigator class="order_pay_wrap"> 
+    保存
+    </navigator>
+</view>

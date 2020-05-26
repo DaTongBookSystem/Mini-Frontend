@@ -167,6 +167,13 @@
 					"pathName": "pages/address/address",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收获地址管理",
+					"pathName": "pages/Address_information/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
