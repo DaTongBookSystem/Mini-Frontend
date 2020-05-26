@@ -16,7 +16,8 @@
     "pages/pay/index",
     "pages/address/address",
     "pages/freight/freight",
-    "pages/vip/index"
+    "pages/vip/index",
+    "pages/Address_information/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

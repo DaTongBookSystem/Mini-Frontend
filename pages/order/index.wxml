@@ -1,5 +1,6 @@
 <Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange" >
     <view class="order_main">
+         <block wx:if="{{orders.length!==0}}">
         <view
         wx:for="{{orders}}"
         wx:key="order_id"
@@ -19,5 +20,21 @@
         </view>
         
         </view>
+        </block>
+        <block wx:elif="{{ status===1 }}">
+            <image mode="widthFix" src="https://zmcm.oss-cn-zhangjiakou.aliyuncs.com/nothing/nopaymentinfo.jpg"></image>
+        </block>
+        <block wx:elif="{{ status===2 }}">
+            <image mode="widthFix" src="https://zmcm.oss-cn-zhangjiakou.aliyuncs.com/nothing/noshipmentinfo.jpg"></image>
+        </block>
+        <block wx:elif="{{ status===3 }}">
+            <image mode="widthFix" src="https://zmcm.oss-cn-zhangjiakou.aliyuncs.com/nothing/noreadinginfo.jpg"></image>
+        </block>
+        <block wx:elif="{{ status===4 }}">
+            <image mode="widthFix" src="https://zmcm.oss-cn-zhangjiakou.aliyuncs.com/nothing/noreturninfo.jpg"></image>
+        </block>
+        <block wx:else="{{ status===5 }}">
+            <image mode="widthFix" src="https://zmcm.oss-cn-zhangjiakou.aliyuncs.com/nothing/nohistoryorderinfo.jpg"></image>
+        </block>
     </view>
 </Tabs>
