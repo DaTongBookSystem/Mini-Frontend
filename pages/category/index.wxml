@@ -7,7 +7,7 @@
      wx:key="id"
      url="/pages/categoryBook/index?categoryId={{item.id}}" open-type="navigate" >
      <image 
-     src="{{item.homeImgUrl}}" mode="scaleToFill">
+     src="{{item.categoryImgUrl}}" mode="scaleToFill">
      </image>
      <view class="text">
      {{item.name}}
