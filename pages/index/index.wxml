@@ -65,8 +65,10 @@
     >
       <!-- 标题 -->
       <view class="floor_title">
-        <image mode="widthFix" mode="scaleToFill" src="{{item1.categoryDetail.homeImgUrl}}">
+        <navigator url="/pages/categoryBook/index?categoryId={{item1.categoryDetail.id}}">
+                <image mode="widthFix" mode="scaleToFill" src="{{item1.categoryDetail.homeImgUrl}}">
         </image>
+        </navigator>
       </view>
       <!-- 内容 -->
       <view class="floor_list">
@@ -75,7 +77,7 @@
         wx:for-item="item2"
         wx:for-index="index2"
         wx:key="name"
-        url="{{item2.navigator_url}}"
+        url="/pages/goods_detail/index?goods_id={{item2.id}}"
         >
         <image src="{{item2.mainImgUrl}}" mode="scaleToFill">
         </image>

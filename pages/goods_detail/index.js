@@ -39,6 +39,7 @@ Page({
    */
   onShow: function () {
     let pages = getCurrentPages();
+    console.log(pages)
     let currentPage = pages[pages.length - 1];
     let options = currentPage.options;
     const { goods_id } = options;
