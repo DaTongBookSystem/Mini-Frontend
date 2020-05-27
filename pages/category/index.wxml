@@ -9,19 +9,6 @@
      <image 
      src="{{item.categoryImgUrl}}" mode="scaleToFill">
      </image>
-     <view class="text">
-     {{item.name}}
-     </view>
     </navigator>
     </view>
-    <!-- <navigator url="/pages/categoryBook/index?categoryId={{item.id}}" open-type="navigate" >
-        <view 
-           class="menu_item"
-           wx:for="{{leftMenuList}}"
-           wx:key="this"
-           data-index="{{index}}"
-           >
-           {{item}}
-        </view> 
-    </navigator>  -->
 </view>
