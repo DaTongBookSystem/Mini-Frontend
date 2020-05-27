@@ -38,7 +38,7 @@
     <!-- 运费券剩余 -->
     <view  class="freight_remaining">
         <view class="freight_remaining">我的运费券剩余：</view>
-        <view class="freight_remaining">100 张</view>
+        <view class="freight_remaining">{{trafficTicketCount}} 张</view>
     </view>
 </view>
 

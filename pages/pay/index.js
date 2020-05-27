@@ -33,7 +33,9 @@ Page({
     address: {},
     cart: [],
     totalPrice: 0,
-    totalNum: 0
+    totalNum: 0,
+    userInfo: {},
+    trafficTicketCount: ''
   },
   async onShow() {
     // 1 获取缓存中的收货地址
@@ -58,14 +60,16 @@ Page({
       cart,
       totalPrice,
       totalNum,
-      address
     });
     await this.getUserInfo()
   },
 
   async getUserInfo() {
-    const result = await request({url: '/user/userInfo', method: 'GET'}, true);
-    console.log(result);
+    const userinfo = await request({url: '/user/userInfo', method: 'GET'}, true);
+    console.log(`userinfo`, userinfo);
+    this.setData({
+      trafficTicketCount: userinfo.trafficTicketCount
+    })
   },
 
   // 点击 支付
@@ -151,11 +155,15 @@ Page({
         url: "/order/updateOrder",
         method: "PUT",
         data: {
-          status: 2
+          status: 2,
+          id
         }
       }, true)
 
       await showToast({ title: "支付成功" });
+      wx.navigateTo({
+        url: '/pages/order/index?status=2',
+      })
       return;
       // 8 手动删除缓存中 已经支付了的商品
       let newCart = wx.getStorageSync("cart");
@@ -174,8 +182,10 @@ Page({
         }
       }, true)
       await showToast({ title: "支付失败" });
+      wx.redirectTo({
+        url: '/pages/order/index?status=1',
+      })
       console.log(error);
-      
     }
   }
 });

@@ -50,7 +50,8 @@ Page({
       }
     ]
   },
-  onShow(options){
+
+  onLoad(options) {
     const token=wx.getStorageSync("token");
     // if(!token){
     //   wx.navigateTo({
@@ -58,16 +59,24 @@ Page({
     //   });
     //   return;
     // }
+    console.log(options);
+    if (options.status) {
+      this.changeTitleByIndex(options.status-1);
+      this.getOrders(options.status);
+    }else{
     // 1 获取当前的小程序的页面栈-数组 长度最大是10页面
     let pages =  getCurrentPages();
     // 2 数组中 索引最大的页面就是当前页面
     let currentPages=pages[pages.length-1];
     // 3 获取url上的type参数
     const {type}=currentPages.options;
+
     // 4 激活选中页面标题 当 type=1 index=0
     this.changeTitleByIndex(type-1);
     this.getOrders(type);
-
+    }
+  },
+  onShow(options){
   },
   // 获取订单列表的方法
   async getOrders(type){

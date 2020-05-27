@@ -175,6 +175,10 @@ Page({
     this.setData({
       isCollect
     })
+  },
+  // 立即购买
+  async handleBuyNow() {
+
   }
 
 })
