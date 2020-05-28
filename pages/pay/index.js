@@ -63,6 +63,25 @@ Page({
     });
     await this.getUserInfo()
   },
+  // 点击 收货地址
+  async handleChooseAddress(){
+    try {
+      // 1 获取 权限状态
+      const res1=await getSetting();
+      const scopeAddress =res1.authSetting["scope.address"];
+      // 2 判断 权限状态
+      if(scopeAddress===false){
+        await openSetting();
+      }
+      // 4 调用获取收获地址的 api
+      let address=await chooseAddress();
+      address.all=address.provinceName+address.cityName+address.countyName+address.detailInfo;
+      // 5 存入到缓存中
+      wx.setStorageSync("address", address);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 
   async getUserInfo() {
     const userinfo = await request({url: '/user/userInfo', method: 'GET'}, true);

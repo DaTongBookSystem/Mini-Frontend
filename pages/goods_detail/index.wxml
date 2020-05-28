@@ -18,10 +18,6 @@
 <view class="goods_price">￥{{goodsObj.goods_price}}</view>
 <view class="goods_name_row">
     <view class="goods_name">{{goodsObj.goods_name}}</view>
-    <view class="goods_collect" bindtap="handleCollect">
-        <text class="iconfont {{isCollect?'icon-shoucang1':'icon-shoucang'}}"></text>
-        <view class="collect_text">收藏</view>
-    </view>
 </view>
 
 <view class="goods_info">
@@ -50,9 +46,6 @@
     </navigator>
     <view class="tool_item btn_cart" bindtap="handleCartAdd">
     加入购物车
-    </view>
-    <view class="tool_item btn_buy" bindtap="handleBuyNow">
-    立即购买
     </view>
 </view>
 

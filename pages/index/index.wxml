@@ -48,9 +48,6 @@
     >
     <image src="{{item.imgUrl}}" mode="widthFix" >
     </image>
-    <view class="text">
-    {{item.name}}
-    </view>
     </navigator>
   </view>
   <!-- 导航 结束 -->

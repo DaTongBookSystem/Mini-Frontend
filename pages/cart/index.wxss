@@ -1,13 +1,6 @@
 page {
   padding-bottom: 90rpx;
 }
-.cart_content .cart_title {
-  padding: 20rpx;
-  font-size: 36rpx;
-  color: dodgerblue;
-  border-top: 1rpx solid currentColor;
-  border-bottom: 1rpx solid currentColor;
-}
 .cart_content .cart_main .cart_item {
   display: flex;
   padding: 10rpx;

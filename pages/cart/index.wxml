@@ -1,6 +1,5 @@
 <!-- 购物车内容 -->
 <view class="cart_content">
-    <view class="cart_title">购物车</view>
     <view class="cart_main">
         <!-- 当cart数组 长度不为0 显示 商品信息 -->
         <block wx:if="{{cart.length!==0}}">
@@ -51,7 +50,6 @@
         <view class="total_price">
             合计：<text class="total_price_text">￥{{totalPrice}}</text>
         </view>
-        <view >包含运费</view>
     </view>
     <!-- 结算 -->
     <view class="order_pay_wrap" bindtap="handlePay">
