@@ -1,6 +1,9 @@
 import { getSetting,chooseAddress,openSetting,showModal,showToast,requestPayment } from "../../utils/asyncWx.js";
 import regeneratorRuntime from '../../lib/runtime/runtime';
 import { request } from "../../request/index.js";
+import {formatDate} from '../../utils/helper'
+
+
 Page({
   data:{
     // address:{},
@@ -17,6 +20,7 @@ Page({
     await this.getVipList(); 
     // 获取用户信息
     const userinfo=wx.getStorageSync("userinfo");
+
     // // 1 获取缓存中的收货地址
     // const address=wx.getStorageSync("address");
     // // 1 获取缓存中的购物车数据
@@ -32,14 +36,37 @@ Page({
     //       totalPrice+=v.num*v.goods_price;
     //       totalNum+=v.num;
     //   })
-      this.setData({
-        // cart,
-        // totalPrice,
-        // totalNum,
-        // address,
-        userinfo
-      });
+    await this.getUserInfo()
+    
   },
+
+  async getUserInfo() {
+    const userinfo = await request({url: '/user/userInfo', method: 'GET'}, true);
+    console.log(`userinfo`, userinfo);
+    userinfo.vipName = this.judgeVipType(userinfo);
+    
+    if (new Date(userinfo.vipExpiredAt) > new Date()) {
+      userinfo.vipExpiredAt = formatDate(new Date(userinfo.vipExpiredAt))
+    }else{
+      userinfo.vipExpiredAt = formatDate(new Date(userinfo.vipExpiredAt)) + '(已过期)'
+    }
+    this.setData({
+      userinfo: userinfo
+    })
+  },
+  judgeVipType(userinfo) {
+    const vipType = userinfo.vipType;
+    console.log(vipType);
+    let vipInfo;
+    this.data.vipList.forEach((vipTypeInfo) => {
+      console.log(vipTypeInfo);
+      if (vipTypeInfo.id === vipType) {
+        vipInfo = vipTypeInfo;
+      }
+    })
+    return vipInfo.name;
+  },
+
   // 点击 支付
    async handleOrderPay(){
     try {
@@ -134,7 +161,11 @@ Page({
     this.setData({
       vip: e.currentTarget.dataset.id
     })
-  }
+  },
+
+
+  
+  
 
 
 })

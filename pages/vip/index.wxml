@@ -6,8 +6,8 @@
                 <image class="user_icon" src="{{userinfo.avatarUrl}}"></image>
                 <view class="user_information">
                 <view class="user_name">{{userinfo.nickName}}</view>
-                <view class="user_vip_type">会员类型</view>
-                <view class="user_date">有效期至:2020/5/9(已过期)</view>
+                <view class="user_vip_type">会员类型: {{userinfo.vipName}}</view>
+                <view class="user_date">有效期至:{{userinfo.vipExpiredAt}}</view>
                 </view>
             </view>
         </view>

@@ -16,11 +16,11 @@
             <!-- 历史足迹 -->
             <view class="history_wrap">
                 <navigator> 
-                    <view class="his_num">0</view>
+                    <view class="his_num">{{userinfo.coinCount}}</view>
                     <view class="his_name">我的智慧豆</view>
                 </navigator>
                  <navigator url="/pages/collect/index"> 
-                    <view class="his_num">{{collectNums}}</view>
+                    <view class="his_num">{{userinfo.trafficTicketCount}}</view>
                     <view class="his_name">我的运费券</view>
                 </navigator>
             </view>
