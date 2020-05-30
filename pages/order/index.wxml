@@ -5,20 +5,24 @@
         wx:for="{{orders}}"
         wx:key="order_id"
         class="order_item">
+        <view
+        wx:for="{{details}}"
+        wx:key="bookId"
+        class="order_item">
         
         <view class="order_no_row">
-            <view class="order_no_text">订单编号</view>
-            <view class="order_on_value">{{item.orderNum}}</view>
+            <view class="order_no_text">书本名称</view>
+            <view class="order_on_value">{{item.details.bookName}}</view>
         </view>
         <view class="order_price_row">
-            <view class="order_price_text">订单价格</view>
-            <view class="order_price_value">￥{{item.totalPrice}}</view>
+            <view class="order_price_text">收货地址</view>
+            <view class="order_price_value">￥{{item.bookName}}</view>
         </view>
         <view class="order_time_row">
             <view class="order_time_text">订单日期</view>
             <view class="order_time_value">{{item.created_at}}</view>
         </view>
-        
+        </view>
         </view>
         </block>
         <block wx:elif="{{ status===1 }}">

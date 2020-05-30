@@ -13,7 +13,7 @@
     </view>
     <view class="user_content">
         <view class="user_main">
-            <!-- 历史足迹 -->
+            <!-- 智慧豆 运费券 -->
             <view class="history_wrap">
                 <navigator> 
                     <view class="his_num">{{userinfo.coinCount}}</view>
