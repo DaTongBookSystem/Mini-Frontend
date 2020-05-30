@@ -1,7 +1,7 @@
     <!-- 用户信息 -->
     <view class="user_info_wrap">
         <view wx:if="{{userinfo.avatarUrl}}" class="user_img_wrap">
-            <image class="user_bg" src="{{userinfo.avatarUrl}}"></image>
+            <image class="user_bg" src="{{vipBgdImg}}" mode="widthFix"></image>
             <view class="user_info">
                 <image class="user_icon" src="{{userinfo.avatarUrl}}"></image>
                 <view class="user_information">
@@ -25,6 +25,17 @@
                         <view class="vip_name">{{item.name}}</view>
                         <view class="vip_price">￥{{item.price}}/年</view>
                 </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 会员特权 -->
+    <view class="vip_privilege">
+        <view  class="vip_privilege_main">
+            <view class="vip_privilege_name">会员特权</view>
+            <!-- 4种会员绑定4种图片 -->
+            <view class="vip_privilege_kind">
+                <image class="vip_privilege_type" src="{{vipPrivilege}}" mode="widthFix"></image>
             </view>
         </view>
     </view>

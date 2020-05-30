@@ -12,7 +12,9 @@ Page({
     // totalNum:0,
     userinfo:{},
     vip: 0,
-    vipList: []
+    vipList: [],
+    vipBgdImg:"../../icons/vip4.png",
+    vipPrivilege:"../../icons/jqqd.png"
   },
   async onLoad() {
   },
@@ -21,28 +23,13 @@ Page({
     // 获取用户信息
     const userinfo=wx.getStorageSync("userinfo");
 
-    // // 1 获取缓存中的收货地址
-    // const address=wx.getStorageSync("address");
-    // // 1 获取缓存中的购物车数据
-    // let cart=wx.getStorageSync("cart")||[];
-    // // 过滤后的购物车数组
-    // cart=cart.filter(v=>v.checked);
-    // this.setData({address});
 
-    //   // 1 总价格 总数量
-    //   let totalPrice=0;
-    //   let totalNum=0;
-    //   cart.forEach(v => {
-    //       totalPrice+=v.num*v.goods_price;
-    //       totalNum+=v.num;
-    //   })
     await this.getUserInfo()
     
   },
 
   async getUserInfo() {
     const userinfo = await request({url: '/user/userInfo', method: 'GET'}, true);
-    console.log(`userinfo`, userinfo);
     userinfo.vipName = this.judgeVipType(userinfo);
     
     if (new Date(userinfo.vipExpiredAt) > new Date()) {
@@ -50,8 +37,12 @@ Page({
     }else{
       userinfo.vipExpiredAt = formatDate(new Date(userinfo.vipExpiredAt)) + '(已过期)'
     }
+    const imageUrl1 = this.vipBgdImg(userinfo)
+    const imageUrl2 = this.vipPrivilege(userinfo)
     this.setData({
-      userinfo: userinfo
+      userinfo: userinfo,
+      vipBgdImg: imageUrl1,
+      vipPrivilege: imageUrl2
     })
   },
   judgeVipType(userinfo) {
@@ -66,6 +57,36 @@ Page({
     })
     return vipInfo.name;
   },
+
+  // 会员类型图片判断
+  vipBgdImg(userinfo){
+    const vipType = userinfo.vipType;
+    switch(vipType){
+      case 1: 
+        return "../../icons/vip1.png"
+      case 2:
+        return "../../icons/vip2.png"
+      case 3:
+        return "../../icons/vip3.png"
+      default: 
+        return "../../icons/vip4.png"
+    }
+  },
+
+    // 会员特权图片判断
+    vipPrivilege(userinfo){
+      const vipType = userinfo.vipType;
+      switch(vipType){
+        case 1: 
+          return "../../icons/zy1.png","../../icons/zy2.png","../../icons/jqqd.png"
+        case 2:
+          return "../../icons/by1.png","../../icons/by2.png","../../icons/jqqd.png"
+        case 3:
+          return "../../icons/th1.png","../../icons/th2.png","../../icons/jqqd.png"
+        default: 
+          return "../../icons/jqqd.png"
+      }
+    },
 
   // 点击 支付
    async handleOrderPay(){

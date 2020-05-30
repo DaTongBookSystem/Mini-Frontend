@@ -11,30 +11,28 @@ page {
   position: relative;
 }
 .user_info_wrap .user_img_wrap .user_bg {
-  height: 30vh;
-  filter: blur(10rpx);
-  border-radius: 10%;
   padding: 10rpx;
 }
 .user_info_wrap .user_img_wrap .user_info {
   position: absolute;
-  left: 20%;
+  left: 17.5%;
   transform: translateX(-20%);
-  top: 10%;
+  top: 20%;
   display: flex;
 }
 .user_info_wrap .user_img_wrap .user_info .user_icon {
   flex: 1.4;
   width: 150rpx;
-  height: 150rpx;
+  height: 130rpx;
   border-radius: 50%;
 }
 .user_info_wrap .user_img_wrap .user_info .user_information {
   flex: 3;
+  margin-left: 30rpx;
 }
 .user_info_wrap .user_img_wrap .user_info .user_information .user_name {
   font-size: 40rpx;
-  color: var(--themeColor);
+  color: #fff;
 }
 .user_info_wrap .user_img_wrap .user_info .user_information .user_vip_type {
   font-size: 30rpx;
@@ -85,6 +83,28 @@ page {
 }
 .vip_wrap .vip_main .vip_kind .vip_type1 {
   border-left: 10px solid #edece8;
+}
+.vip_privilege {
+  position: relative;
+}
+.vip_privilege .vip_privilege_main {
+  position: absolute;
+  width: 90%;
+  left: 33.33%;
+  transform: translateX(-33.33%);
+  top: 260rpx;
+}
+.vip_privilege .vip_privilege_main .vip_privilege_name {
+  padding: 10rpx;
+  font-size: 30rpx;
+}
+.vip_privilege .vip_privilege_main .vip_privilege_kind {
+  display: flex;
+}
+.vip_privilege .vip_privilege_main .vip_privilege_kind .vip_privilege_type {
+  padding: 10rpx;
+  width: 50%;
+  height: 50%;
 }
 .footer_tool {
   position: fixed;

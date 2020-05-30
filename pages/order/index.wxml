@@ -6,7 +6,7 @@
         wx:key="order_id"
         class="order_item">
         <view
-        wx:for="{{details}}"
+        wx:for="{{item.details}}"
         wx:key="bookId"
         class="order_item">
         
