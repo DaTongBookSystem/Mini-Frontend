@@ -48,7 +48,7 @@ page {
   padding-bottom: 100rpx;
   color: #666;
   position: absolute;
-  width: 90%;
+  width: 95%;
   left: 50%;
   transform: translateX(-50%);
   top: -40rpx;
@@ -56,6 +56,8 @@ page {
 .user_content .user_main .history_wrap {
   background-color: #fff;
   display: flex;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
 }
 .user_content .user_main .history_wrap navigator {
   flex: 1;
@@ -67,11 +69,7 @@ page {
 }
 .user_content .user_main .orders_wrap {
   background-color: #fff;
-  margin-top: 30rpx;
-}
-.user_content .user_main .orders_wrap .orders_title {
-  padding: 20rpx;
-  border-bottom: 1rpx solid #ccc;
+  margin-top: 10rpx;
 }
 .user_content .user_main .orders_wrap .orders_content {
   display: flex;
