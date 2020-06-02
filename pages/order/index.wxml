@@ -2,19 +2,31 @@
     <view class="order_main">
         <block wx:if="{{orders.length!==0}}">
             <view wx:for="{{orders}}" wx:key="order_id" class="order_item">
-                <view wx:for="{{item.details}}" wx:key="bookId" class="order_item">
-                    <view class="order_no_row">
-                        <view class="order_no_text">书本名称</view>
-                        <view class="order_on_value">{{item.bookName}}</view>
+                    <!-- 订单日期和地址 -->
+                    <view class="order_main1_row">
+                        <!-- 订单日期 -->
+                        <view class="order_time_row">
+                            <view class="order_time_text">订单日期:</view>
+                            <view class="order_time_value">{{item.created_at}}</view>
+                        </view>
+                        <!-- 收货地址 -->
+                        <view class="order_address_row">
+                            <view class="order_address_text">收货地址:</view>
+                            <view class="order_address_information">{{item.addressInfo.address}}</view>
+                        </view>
                     </view>
-                </view>
-                <view class="order_price_row">
-                    <view class="order_price_text">收货地址</view>
-                    <view class="order_price_value">￥{{item.addressInfo.address}}</view>
-                </view>
-                <view class="order_time_row">
-                    <view class="order_time_text">订单日期</view>
-                    <view class="order_time_value">{{item.created_at}}</view>
+                <view wx:for="{{item.details}}" wx:key="bookId" class="order_item">
+                    <!-- 订单图片和信息 -->
+                    <view class="order_main2_row">
+                        <!-- 订单图片 -->
+                        <navigator class="order_img_wrap">
+                            <image mode="widthFix" src="{{item.bookSmallPic}}"></image>
+                        </navigator>
+                        <!-- 订单信息 -->
+                        <view class="order_no_row">
+                            <view class="order_on_value">{{item.bookName}}</view>
+                        </view>
+                    </view>
                 </view>
             </view>
         </block>

@@ -23,8 +23,6 @@
 <view class="goods_info">
     <view class="goods_info_title">图文详情</view>
     <view class="goods_info_content">
-        <!-- 富文本 -->
-        <!-- {{goodsObj.goods_introduce}} -->
         <rich-text  nodes="{{goodsObj.goods_introduce}}"></rich-text>
     </view>
 </view>

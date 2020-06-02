@@ -15,7 +15,7 @@ page {
 .cates .container navigator:nth-child(4),
 .cates .container navigator:nth-child(6),
 .cates .container navigator:nth-child(8) {
-  border-left: 25rpx solid #dedede;
+  border-left: 15rpx solid #dedede;
 }
 .cates .container navigator image {
   width: 100%;

@@ -54,7 +54,7 @@ page {
 .index_floor .floor_group .floor_list navigator:nth-child(2),
 .index_floor .floor_group .floor_list navigator:nth-child(4),
 .index_floor .floor_group .floor_list navigator:nth-child(6) {
-  border-left: 20rpx solid #dedede;
+  border-left: 15rpx solid #dedede;
   border-right: 10rpx solid #dedede;
 }
 .index_floor .floor_group .floor_list navigator:nth-child(1),
