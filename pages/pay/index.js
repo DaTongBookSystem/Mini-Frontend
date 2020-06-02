@@ -157,29 +157,29 @@ Page({
           orderId: id
         }
       });
-      console.log(`发起 预支付接口`, data)
-      const pay = {
-        timeStamp: data.timeStamp,
-        nonceStr: data.nonceStr,
-        // package: data.package,
-        package: 'prepay_id=' + data.prepayId,
-        signType: 'MD5',
-        paySign: data.paySign,
-      }
-      // 6 发起 微信支付
-      await requestPayment(pay);
+      // console.log(`发起 预支付接口`, data)
+      // const pay = {
+      //   timeStamp: data.timeStamp,
+      //   nonceStr: data.nonceStr,
+      //   // package: data.package,
+      //   package: 'prepay_id=' + data.prepayId,
+      //   signType: 'MD5',
+      //   paySign: data.paySign,
+      // }
+      // // 6 发起 微信支付
+      // await requestPayment(pay);
       
-      // 7 支付成功 更新订单状态
-      await request({
-        url: "/order/updateOrder",
-        method: "PUT",
-        data: {
-          status: 2,
-          id
-        }
-      }, true)
+      // // 7 支付成功 更新订单状态
+      // await request({
+      //   url: "/order/updateOrder",
+      //   method: "PUT",
+      //   data: {
+      //     status: 2,
+      //     id
+      //   }
+      // }, true)
 
-      await showToast({ title: "支付成功" });
+      await showToast({ title: "购书成功" });
       wx.navigateTo({
         url: '/pages/order/index?status=2',
       })
@@ -200,7 +200,7 @@ Page({
           status: 1
         }
       }, true)
-      await showToast({ title: "支付失败" });
+      await showToast({ title: "购书失败" });
       wx.redirectTo({
         url: '/pages/order/index?status=1',
       })
