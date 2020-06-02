@@ -1,3 +1,6 @@
+import { request } from '../../request/index.js';
+import regeneratorRuntime from '../../lib/runtime/runtime';
+
 // pages/Address_information/index.js
 Page({
 
@@ -5,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    addressInfo: {},
+    disabled: true
   },
 
   /**
@@ -15,52 +19,63 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  recordInput: function (e) {
+    console.log(e)
+    const type = e.target.dataset.text || 'phone';
+    const value = e.detail.value;
+    const { addressInfo } = this.data;
+    switch (type) {
+      case 'receiver':
+        addressInfo.receiver = value
+        break;
+      case 'phone':
+        addressInfo.phone = value
+        break;
+      case 'area':
+          addressInfo.area = value
+          break;
+      case 'detail':
+        addressInfo.detail = value
+        break;
+      case 'postCode':
+        addressInfo.postCode = value
+        break;
+      default:
+        break;
 
+    }
+    const { receiver, phone, detail, postCode } = this.data.addressInfo;
+    if (receiver && phone && detail && postCode) {
+      this.setData({
+        addressInfo: this.data.addressInfo,
+        disabled: false
+      })
+    }else{
+      this.setData({
+        addressInfo: this.data.addressInfo,
+        disabled: true
+      })
+    }
+    
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  async submitAddressInfo() {
+    console.log(this);
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    const { receiver, phone, detail, postCode, area } = this.data.addressInfo;
+    if (!receiver || !phone || !detail || !postCode || !area) {
+      return;
+    }
+    try{
+      await request({ url: '/address', method: 'POST',  data: { receiver, phone, detail, postCode, area } }, true);
+      wx.navigateBack({
+        delta: 1
+      })
+    }catch(error) {
+      console.log(`create address error`, error)
+    }
+    
   }
+
+  
 })

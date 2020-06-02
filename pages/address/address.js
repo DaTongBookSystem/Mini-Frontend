@@ -1,3 +1,6 @@
+import { request } from '../../request/index.js';
+import regeneratorRuntime from '../../lib/runtime/runtime';
+
 // pages/address/address.js
 Page({
 
@@ -5,14 +8,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    addressList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(`onload`)
   },
 
   /**
@@ -25,8 +28,13 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  async onShow() {
+    console.log('onshow');
+    const addressList = await request({ url: '/address/list', method: 'GET'}, true);
+    console.log(addressList)
+    this.setData({
+      addressList: addressList
+    })
   },
 
   /**
