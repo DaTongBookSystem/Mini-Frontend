@@ -10,35 +10,33 @@ page{
         }
     }
 }
-.goods_price{
-    padding: 15rpx;
-    font-size: 32rpx;
-    font-weight: 600;
-    color:#eb4450;
-}
 .goods_name_row{
     border-top: 5rpx solid #dedede;
     border-bottom: 5rpx solid #dedede;
     padding: 10rpx 0;
-    display: flex;
     .goods_name{
-        flex: 5;
         color: #000;
         font-size: 30rpx;
         padding: 0 10rpx;
-
         display: -webkit-box;
         overflow: hidden;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
     }
-    .goods_collect{
-        flex: 1;
+    .goods_price{
+        padding: 10rpx;
+        font-size: 32rpx;
+        font-weight: 600;
+        color:#eb4450;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-left: 1rpx solid #000;
+        .goods_zhd{
+            height: 6%;
+            width: 6%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10rpx;
+        }
     }
 }
 

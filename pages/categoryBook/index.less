@@ -11,32 +11,39 @@ page{
                         background-color: #fff;
                         float: left;
                         width: 50%;
-                        // border-top: 20rpx solid #dedede;
                         border: 10rpx solid #dedede;
                         border-radius: 20rpx;
-                        // &:nth-child(even){
-                        //     border-left: 20rpx solid #dedede;
-                        // }
                     .goods_img_wrap{
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         image{
                             width: 100%;
+                            height: 400rpx;
                         } 
                     }
                     .goods_info_wrap{
-                        display: flex;
                         justify-content: center;
                         .goods_name{
                             font-weight: 900;
                             font-size: 32rpx;
                             color: black;
+                            padding: 20rpx;
                         }
                         .goods_price{
                             color: #eb4450;
                             font-size: 32rpx;
                             font-weight: 900;
+                            padding: 20rpx;
+                            display: flex;
+                            .goods_zhd{
+                                height: 13%;
+                                width: 13%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                margin-right: 10rpx;
+                            }
                         }
                     }
                 }

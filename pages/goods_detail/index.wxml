@@ -15,9 +15,12 @@
     </swiper>
 </view>
 
-<view class="goods_price">￥{{goodsObj.goods_price}}</view>
 <view class="goods_name_row">
     <view class="goods_name">{{goodsObj.goods_name}}</view>
+    <view class="goods_price"> 
+    <image class="goods_zhd" src="../../icons/zhd.png" mode="widthFix"></image>
+        X{{goodsObj.goods_price}}
+</view>
 </view>
 
 <view class="goods_info">

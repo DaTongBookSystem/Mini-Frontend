@@ -22,18 +22,29 @@ page {
 }
 .cates .goods_group .goods_list navigator .goods_img_wrap image {
   width: 100%;
+  height: 400rpx;
 }
 .cates .goods_group .goods_list navigator .goods_info_wrap {
-  display: flex;
   justify-content: center;
 }
 .cates .goods_group .goods_list navigator .goods_info_wrap .goods_name {
   font-weight: 900;
   font-size: 32rpx;
   color: black;
+  padding: 20rpx;
 }
 .cates .goods_group .goods_list navigator .goods_info_wrap .goods_price {
   color: #eb4450;
   font-size: 32rpx;
   font-weight: 900;
+  padding: 20rpx;
+  display: flex;
+}
+.cates .goods_group .goods_list navigator .goods_info_wrap .goods_price .goods_zhd {
+  height: 13%;
+  width: 13%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10rpx;
 }

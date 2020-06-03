@@ -36,14 +36,19 @@ page {
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap {
   display: flex;
-  justify-content: space-between;
+}
+.cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .goods_zhd {
+  height: 10%;
+  width: 10%;
+  margin-right: 10rpx;
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .goods_price {
   color: #eb4450;
-  font-size: 34rpx;
+  font-size: 32rpx;
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .cart_num_tool {
   display: flex;
+  margin-left: 120rpx;
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .cart_num_tool .num_edit {
   width: 55rpx;
