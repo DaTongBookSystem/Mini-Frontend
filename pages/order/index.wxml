@@ -20,11 +20,12 @@
                     <view class="order_main2_row">
                         <!-- 订单图片 -->
                         <navigator class="order_img_wrap">
-                            <image mode="widthFix" src="{{item.bookSmallPic}}"></image>
+                            <image mode="scaleToFill" src="{{item.bookSmallPic}}"></image>
                         </navigator>
                         <!-- 订单信息 -->
                         <view class="order_no_row">
-                            <view class="order_on_value">{{item.bookName}}</view>
+                            <view class="order_name_text">书本名称:</view>
+                            <view class="order_on_name">{{item.bookName}}</view>
                         </view>
                     </view>
                 </view>

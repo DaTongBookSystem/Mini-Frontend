@@ -8,15 +8,30 @@ page {
   width: 60%;
 }
 .revice_address_row .user_info_row {
+  padding: 20rpx;
+}
+.revice_address_row .user_info_row navigator {
+  width: 100%;
   display: flex;
-  padding: 40rpx;
 }
-.revice_address_row .user_info_row .user_info {
-  flex: 5;
+.revice_address_row .user_info_row navigator .user_main1 {
+  flex: 9;
 }
-.revice_address_row .user_info_row .user_phone {
-  flex: 3;
+.revice_address_row .user_info_row navigator .user_main1 .user_address {
+  font-size: 35rpx;
+  font-weight: 600;
+}
+.revice_address_row .user_info_row navigator .user_main1 .user_main2 {
+  display: flex;
+  font-weight: 550;
+}
+.revice_address_row .user_info_row navigator .user_main1 .user_main2 .user_name {
+  margin-right: 20rpx;
+}
+.revice_address_row .user_info_row navigator .pay_choose {
+  flex: 1;
   text-align: right;
+  margin-top: 20rpx;
 }
 .cart_content .cart_main .cart_item {
   display: flex;

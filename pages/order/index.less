@@ -3,9 +3,10 @@
     .order_item {
       .order_main1_row{
         padding: 15rpx;
-        border-top: 2rpx solid #ccc;
+        border-top: 1rpx solid #ccc;
         .order_time_row {
           display: flex;
+          font-size: 25rpx;
           .order_time_text{
             flex: 1;
           }
@@ -15,6 +16,8 @@
         }
         .order_address_row {
           display: flex;
+          font-size: 25rpx;
+          margin-bottom: 20rpx;
           .order_address_text {
             flex: 1;
           }
@@ -25,23 +28,26 @@
       }
       .order_main2_row{
         display: flex;
-        border-bottom: 6rpx solid #ccc;
+        border-bottom: 1rpx solid #ccc;
+        padding: 15rpx;
         .order_img_wrap {
           flex: 1;
           display: flex;
           justify-content: center;
           align-items: center;
           image {
-          width: 80%;
+          width: 100%;
+          height: 180rpx;
           }
         }
         .order_no_row {
+          margin-left: 20rpx;
           flex: 3;
-          .order_on_value {
-            display: -webkit-box;
-            overflow: hidden;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
+          display: flex;
+          .order_name_text{
+            margin-right: 20rpx;
+          }
+          .order_on_name {
           }
         }
       }

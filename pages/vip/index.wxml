@@ -35,8 +35,7 @@
             <view class="vip_privilege_name">会员特权</view>
             <!-- 4种会员绑定4种图片 -->
             <view class="vip_privilege_kind">
-                <image wx:for="{{vipPrivilege}}" wx:key="iamgeId" src="{{item}}" mode="widthFix"> </image>
-                <!-- <image class="vip_privilege_type" src="{{vipPrivilege}}" mode="widthFix"></image> -->
+                <image  wx:for="{{vipPrivilege}}" wx:key="iamgeId" src="{{item}}" mode="widthFix"></image>
             </view>
         </view>
     </view>

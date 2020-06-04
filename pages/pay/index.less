@@ -9,15 +9,32 @@ page{
     }
   }
     .user_info_row{
-        display: flex;
-        padding: 40rpx;
-        .user_info{
-            flex: 5;
-        }
-        .user_phone{
-            flex: 3;
+        padding: 20rpx;
+        navigator{
+          width: 100%;
+          display: flex;
+          .user_main1{
+            flex: 9;
+            .user_address{
+              font-size: 35rpx;
+              font-weight: 600;
+            }
+            .user_main2{
+              display: flex;
+              font-weight: 550;
+              .user_name{
+                margin-right: 20rpx;
+              }
+              .user_phone{
+              }
+            }
+          }
+          .pay_choose{
+            flex: 1;
             text-align: right;
-        }
+            margin-top: 20rpx;
+          }
+      }
     }
 }
 
@@ -92,8 +109,7 @@ page{
       .freight_remain1{
       }
       .freight_remain2{
-       
-      }
+       }
     }
     .freight_remaining{
       display: flex;

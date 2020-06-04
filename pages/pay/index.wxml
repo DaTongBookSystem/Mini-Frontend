@@ -6,11 +6,19 @@
     </view>
     <!-- 当收货地址 存在 详细信息显示 -->
     <view wx:else class="user_info_row">
-        <view class="user_info">
-           <view >{{address.userName}}</view>
-           <view >{{address.all}}</view>
+        <!-- 跳转地址选择页面 -->
+        <navigator url="/pages/address/address">
+        <view class="user_main1">
+            <view class="user_address">
+            <view >{{address.all}}</view>
+            </view>
+            <view class="user_main2">
+                <view class="user_name">{{address.userName}}</view>
+                <view class="user_phone">{{address.telNumber}}</view>
+            </view>
         </view>
-        <view class="user_phone">{{address.telNumber}}</view>
+            <view class="pay_choose">></view>
+        </navigator>
     </view>
 </view>
 

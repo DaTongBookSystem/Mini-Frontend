@@ -1,13 +1,34 @@
-.revice_address_row .user_info_row {
+page {
+  background-color: #dfdfdf;
+}
+.revice_address_row {
+  background-color: #fff;
+}
+.revice_address_row .revice_address .user_info_row {
+  padding: 20rpx;
+  border-top: 1px solid #dfdfdf;
+}
+.revice_address_row .revice_address .user_info_row .user_addresss {
+  font-size: 35rpx;
+  font-weight: 600;
+}
+.revice_address_row .revice_address .user_info_row .user_main1 {
   display: flex;
-  padding: 40rpx;
+  font-weight: 550;
 }
-.revice_address_row .user_info_row .user_info {
-  flex: 5;
+.revice_address_row .revice_address .user_info_row .user_main1 .user_name {
+  margin-right: 20rpx;
 }
-.revice_address_row .user_info_row .user_phone {
-  flex: 3;
-  text-align: right;
+.revice_address_row .revice_address .user_info_row .user_edit_row {
+  display: flex;
+  margin-top: 20rpx;
+}
+.revice_address_row .revice_address .user_info_row .user_edit_row .cart_chk_wrap {
+  display: flex;
+}
+.revice_address_row .revice_address .user_info_row .user_edit_row .user_main2 {
+  display: flex;
+  margin-left: 400rpx;
 }
 .footer_tool {
   position: fixed;

@@ -14,7 +14,7 @@ Page({
     vip: 0,
     vipList: [],
     vipBgdImg:"../../icons/vip4.png",
-    vipPrivilege:["../../icons/jqqd.png"]
+    vipPrivilege:[]
   },
   async onLoad() {
   },
@@ -78,13 +78,13 @@ Page({
       const vipType = userinfo.vipType;
       switch(vipType){
         case 1: 
-          return ["../../icons/zy1.png","../../icons/zy2.png","../../icons/jqqd.png"]
+          return ["../../icons/zy1.png","../../icons/zy2.png"]
         case 2:
-          return ["../../icons/by1.png","../../icons/by2.png","../../icons/jqqd.png"]
+          return ["../../icons/by1.png","../../icons/by2.png"]
         case 3:
-          return ["../../icons/th1.png","../../icons/th2.png","../../icons/jqqd.png"]
+          return ["../../icons/th1.png","../../icons/th2.png"]
         default: 
-          return ["../../icons/jqqd.png"]
+          return []
       }
     },
 

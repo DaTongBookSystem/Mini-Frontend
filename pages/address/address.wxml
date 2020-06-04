@@ -1,30 +1,31 @@
 <!-- 用户收货地址 -->
 <view class="revice_address_row">
-    <view wx:for="{{addressList}}" wx:key="address_id">
-     <!-- 当收货地址 不存在 没有显示-->
-    <view wx:if="{{!item.receiver}}">
-    </view>
-    <!-- 当收货地址 存在 详细信息显示 -->
-    <view wx:else class="user_info_row">
-        <view class="user_info">
-           <view >{{item.receiver}}</view>
-           <view >{{item.detail}}</view>
+    <view class="revice_address" wx:for="{{addressList}}" wx:key="address_id">
+        <!-- 当收货地址 不存在 没有显示-->
+        <view wx:if="{{!item.receiver}}"></view>
+        <!-- 当收货地址 存在 详细信息显示 -->
+        <view wx:else class="user_info_row">
+            <view class="user_addresss">{{item.detail}}</view>
+            <view class="user_main1">
+                <view class="user_name">{{item.receiver}}</view>
+                <view class="user_phone">{{item.phone}}</view>
+            </view>
+            <!-- 复选框 -->
+            <view class="user_edit_row">
+                <view class="cart_chk_wrap">
+                    <checkbox-group data-id="{{}}" bindchange="">
+                        <checkbox checked="{{}}"></checkbox> 
+                    </checkbox-group>
+                    <view class="goods_moren">默认地址</view>
+                </view>
+                <view class="user_main2">
+                    <view bindtap="handleItemNumEdit" data-id="" data-operation="" class="num_edit">编辑</view> 
+                    <view>丨</view>
+                    <view bindtap="handleItemNumEdit" data-id="" data-operation="" class="num_edit">删除</view>
+                </view>        
+            </view>
         </view>
-        <view class="user_phone">{{item.phone}}</view>
-        <!-- 复选框 -->
-        <view class="cart_chk_wrap">
-            <checkbox-group data-id="{{}}" bindchange="">
-                <checkbox checked="{{}}"></checkbox> 
-            </checkbox-group>
-            <view class="goods_moren">默认地址</view>
-        </view>
-        <view bindtap="handleItemNumEdit" data-id="" data-operation="" class="num_edit">编辑</view> 
-        <view class="goods_shuxian">丨</view>
-        <view bindtap="handleItemNumEdit" data-id="" data-operation="" class="num_edit">删除</view>        
-
     </view>
-    </view>
-   
 </view>
 
 

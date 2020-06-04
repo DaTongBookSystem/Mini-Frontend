@@ -92,22 +92,19 @@ page {
 }
 .vip_privilege .vip_privilege_main {
   position: absolute;
-  width: 90%;
-  left: 33.33%;
-  transform: translateX(-33.33%);
   top: 260rpx;
 }
 .vip_privilege .vip_privilege_main .vip_privilege_name {
   padding: 10rpx;
   font-size: 30rpx;
+  margin-bottom: 30rpx;
 }
 .vip_privilege .vip_privilege_main .vip_privilege_kind {
   display: flex;
+  width: 760rpx;
 }
-.vip_privilege .vip_privilege_main .vip_privilege_kind .vip_privilege_type {
-  padding: 10rpx;
-  width: 50%;
-  height: 50%;
+.vip_privilege .vip_privilege_main .vip_privilege_kind .image {
+  width: 100%;
 }
 .footer_tool {
   position: fixed;
