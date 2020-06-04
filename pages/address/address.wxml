@@ -1,15 +1,16 @@
 <!-- 用户收货地址 -->
 <view class="revice_address_row">
-    <!-- 当收货地址 不存在 没有显示-->
-    <view wx:if="{{!address.userName}}">
+    <view wx:for="{{addressList}}" wx:key="address_id">
+     <!-- 当收货地址 不存在 没有显示-->
+    <view wx:if="{{!item.receiver}}">
     </view>
     <!-- 当收货地址 存在 详细信息显示 -->
     <view wx:else class="user_info_row">
         <view class="user_info">
-           <view >{{address.userName}}</view>
-           <view >{{address.all}}</view>
+           <view >{{item.receiver}}</view>
+           <view >{{item.detail}}</view>
         </view>
-        <view class="user_phone">{{address.telNumber}}</view>
+        <view class="user_phone">{{item.phone}}</view>
         <!-- 复选框 -->
         <view class="cart_chk_wrap">
             <checkbox-group data-id="{{}}" bindchange="">
@@ -22,6 +23,8 @@
         <view bindtap="handleItemNumEdit" data-id="" data-operation="" class="num_edit">删除</view>        
 
     </view>
+    </view>
+   
 </view>
 
 
