@@ -21,7 +21,7 @@
         <view  class="vip_main">
             <!-- 4种会员 -->
             <view class="vip_kind">
-                <view class="vip_type {{item.id === 1 ? '' : 'vip_type1'}}" wx:for-items="{{vipList}}" bindtap="buyVip" data-id="{{item.id}}">
+                <view class="vip_type {{item.id === vip ? 'vip_select_background' : ''}} {{item.id === 1 ? '' : 'vip_type1'}} " wx:for-items="{{vipList}}" bindtap="buyVip" data-id="{{item.id}}">
                         <view class="vip_name">{{item.name}}</view>
                         <view class="vip_price">￥{{item.price}}/年</view>
                 </view>

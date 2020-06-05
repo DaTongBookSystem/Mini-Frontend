@@ -87,6 +87,9 @@ page {
 .vip_wrap .vip_main .vip_kind .vip_type1 {
   margin-left: 10rpx;
 }
+.vip_select_background {
+  background-color: orange;
+}
 .vip_privilege {
   position: relative;
 }
