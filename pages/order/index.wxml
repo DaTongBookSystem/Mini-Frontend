@@ -12,7 +12,7 @@
                     <!-- 收货地址 -->
                     <view class="order_address_row">
                         <view class="order_address_text">收货地址:</view>
-                        <view class="order_address_information">{{item.addressInfo.address}}</view>
+                        <view class="order_address_information">{{item.addressInfo.detail}}</view>
                     </view>
                 </view>
                 <view wx:for="{{item.details}}" wx:key="bookId" class="order_item">
