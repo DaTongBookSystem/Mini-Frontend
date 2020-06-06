@@ -37,17 +37,16 @@ Page({
     userInfo: {},
     trafficTicketCount: ''
   },
+  onLoad(options) {
+    
+  },
   async onShow() {
-    // 1 获取缓存中的收货地址
-    const address = wx.getStorageSync("address");
-    console.log(`address`, address);
     // 1 获取缓存中的购物车数据
     let cart = wx.getStorageSync("cart") || [];
     console.log(cart);
     // 过滤后的购物车数组
     cart = cart.filter(v => v.checked === true);
     console.log(cart);
-    this.setData({ address });
 
     // 1 总价格 总数量
     let totalPrice = 0;
@@ -63,31 +62,50 @@ Page({
     });
     await this.getUserInfo()
   },
+
+  async getUserDefaultAddress() {
+
+  },
   // 点击 收货地址
   async handleChooseAddress(){
     try {
-      // 1 获取 权限状态
-      const res1=await getSetting();
-      const scopeAddress =res1.authSetting["scope.address"];
-      // 2 判断 权限状态
-      if(scopeAddress===false){
-        await openSetting();
-      }
-      // 4 调用获取收获地址的 api
-      let address=await chooseAddress();
-      address.all=address.provinceName+address.cityName+address.countyName+address.detailInfo;
-      // 5 存入到缓存中
-      wx.setStorageSync("address", address);
+      // // 1 获取 权限状态
+      // const res1=await getSetting();
+      // const scopeAddress =res1.authSetting["scope.address"];
+      // // 2 判断 权限状态
+      // if(scopeAddress===false){
+      //   await openSetting();
+      // }
+      // // 4 调用获取收获地址的 api
+      // let address=await chooseAddress();
+      // address.all=address.provinceName+address.cityName+address.countyName+address.detailInfo;
+      // // 5 存入到缓存中
+      // wx.setStorageSync("address", address);
+
+      // 导航到地址列表
+      console.log(`go to address info pahe`)
+      wx.navigateTo({
+        url: '/pages/addressInfo/index?comeFromOrderPage=true',
+      })
     } catch (error) {
       console.log(error);
     }
   },
 
   async getUserInfo() {
-    const userinfo = await request({url: '/user/userInfo', method: 'GET'}, true);
-    console.log(`userinfo`, userinfo);
+    console.log(this.data)
+    if (this.data.userInfo.openid && this.data.address.receiver) return;
+    const data = await request({url: '/user/userInfoAndDefaulAddress', method: 'GET'}, true);
+    console.log(`data: userinfo`, data);
+    if (!this.data.address.receiver) {
+      this.setData({
+        trafficTicketCount: data.userInfo.trafficTicketCount,
+        address: data.defaultAddress || {}
+      })
+      return;
+    }
     this.setData({
-      trafficTicketCount: userinfo.trafficTicketCount
+      trafficTicketCount: data.userInfo.trafficTicketCount,
     })
   },
 
@@ -130,15 +148,16 @@ Page({
       } = this.data.address;
       const orderParams = {
         totalPrice: order_price,
-        addressInfo: {
-          address: consignee_addr,
-          telNumber,
-          cityName,
-          countyName,
-          postalCode,
-          provinceName,
-          userName
-        },
+        // addressInfo: {
+        //   address: consignee_addr,
+        //   telNumber,
+        //   cityName,
+        //   countyName,
+        //   postalCode,
+        //   provinceName,
+        //   userName
+        // },
+        addressInfo: this.data.address,
         details: goods
       };
       console.log(`orderParams`, orderParams);

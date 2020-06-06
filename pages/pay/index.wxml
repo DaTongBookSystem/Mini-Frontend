@@ -1,20 +1,20 @@
 <!-- 收货地址 -->
 <view class="revice_address_row">
     <!-- 当收货地址 不存在 按钮显示 对象 空对象 bool类型是true-->
-    <view class="address_btn" wx:if="{{!address.userName}}">
+    <view class="address_btn" wx:if="{{!address.receiver}}">
         <button bindtap="handleChooseAddress" type="primary" plain="{{true}}">获取收货地址</button>
     </view>
     <!-- 当收货地址 存在 详细信息显示 -->
     <view wx:else class="user_info_row">
         <!-- 跳转地址选择页面 -->
-        <navigator url="/pages/address/address">
+        <navigator url="/pages/address/address?comeFromOrderPage=true">
         <view class="user_main1">
             <view class="user_address">
-            <view >{{address.all}}</view>
+            <view >{{address.detail}}</view>
             </view>
             <view class="user_main2">
-                <view class="user_name">{{address.userName}}</view>
-                <view class="user_phone">{{address.telNumber}}</view>
+                <view class="user_name">{{address.receiver}}</view>
+                <view class="user_phone">{{address.phone}}</view>
             </view>
         </view>
             <view class="pay_choose">></view>

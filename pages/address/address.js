@@ -1,6 +1,14 @@
 import { request } from '../../request/index.js';
 import regeneratorRuntime from '../../lib/runtime/runtime';
 import {filterResult} from '../../utils/helper';
+import {
+  getSetting,
+  chooseAddress,
+  openSetting,
+  showModal,
+  showToast,
+  requestPayment
+} from "../../utils/asyncWx.js";
 
 // pages/address/address.js
 Page({
@@ -9,7 +17,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addressList: []
+    addressList: [],
+    comeFromOrderPage: false
   },
 
   /**
@@ -17,6 +26,12 @@ Page({
    */
   onLoad: function (options) {
     console.log(`onload`)
+    console.log(options)
+    if (options.comeFromOrderPage) {
+      this.setData({
+        comeFromOrderPage: options.comeFromOrderPage
+      })
+    }
   },
 
   /**
@@ -46,6 +61,25 @@ Page({
     wx.navigateTo({
       url: '/pages/Address_information/index?addressInfo=' + JSON.stringify(address),
     })
+  },
+
+  async selectAddress(e) {
+    console.log(e);
+    if (!this.data.comeFromOrderPage) return;
+    if (!this.data.addressList.length) {
+      await showToast({ title: "请添加地址" });
+    }
+    console.log(`选择地址`, e);
+    // 传递参数回到上一个page
+    const pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];
+    prevPage.setData({
+      address: this.data.addressList[e.currentTarget.dataset.index]
+    })
+    wx.navigateBack({
+      delta: 1
+    })
+
   },
 
   async deleteItemNum(e) {

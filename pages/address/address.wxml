@@ -1,6 +1,6 @@
 <!-- 用户收货地址 -->
 <view class="revice_address_row">
-    <view class="revice_address" wx:for="{{addressList}}" wx:key="{{index}}">
+    <view class="revice_address" wx:for="{{addressList}}" wx:key="{{index}}" bindtap="selectAddress" data-index="{{index}}">
         <!-- 当收货地址 不存在 没有显示-->
         <view wx:if="{{!item.receiver}}"></view>
         <!-- 当收货地址 存在 详细信息显示 -->
