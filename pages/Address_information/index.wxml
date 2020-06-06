@@ -22,7 +22,5 @@
 <!-- 底部工具栏 -->
 <view class="footer_tool">
     <!-- 地址 -->
-    <!-- <navigator class="order_pay_wrap"> 
-    </navigator> -->
-      <button class="order_pay_wrap" bindtap="submitAddressInfo" disabled="{{disabled}}">保存</button>
+    <button class="order_pay_wrap" bindtap="submitAddressInfo" disabled="{{disabled}}">保存</button>
 </view>

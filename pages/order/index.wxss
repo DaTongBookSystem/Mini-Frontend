@@ -47,5 +47,21 @@
   display: flex;
 }
 .order_main .order_item .order_main2_row .order_no_row .order_name_text {
-  margin-right: 20rpx;
+  flex: 1.5;
+}
+.order_main .order_item .order_main2_row .order_no_row .order_on_name {
+  flex: 3;
+}
+.order_main .order_item .order_main2_row .order_no_row .order_on_status {
+  flex: 1;
+  color: #eb4450;
+}
+.order_main .order_item .order_btn {
+  padding: 10rpx 0;
+}
+.order_main .order_item .order_btn .order_btn_wrap {
+  border: 1rpx solid #ccc;
+  width: 180rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
 }
