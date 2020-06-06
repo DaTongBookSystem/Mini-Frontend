@@ -2,19 +2,19 @@
     <view class="order_main">
         <block wx:if="{{orders.length!==0}}">
             <view wx:for="{{orders}}" wx:key="order_id" class="order_item">
-                    <!-- 订单日期和地址 -->
-                    <view class="order_main1_row">
-                        <!-- 订单日期 -->
-                        <view class="order_time_row">
-                            <view class="order_time_text">订单日期:</view>
-                            <view class="order_time_value">{{item.created_at}}</view>
-                        </view>
-                        <!-- 收货地址 -->
-                        <view class="order_address_row">
-                            <view class="order_address_text">收货地址:</view>
-                            <view class="order_address_information">{{item.addressInfo.address}}</view>
-                        </view>
+                <!-- 订单日期和地址 -->
+                <view class="order_main1_row">
+                    <!-- 订单日期 -->
+                    <view class="order_time_row">
+                        <view class="order_time_text">订单日期:</view>
+                        <view class="order_time_value">{{item.created_at}}</view>
                     </view>
+                    <!-- 收货地址 -->
+                    <view class="order_address_row">
+                        <view class="order_address_text">收货地址:</view>
+                        <view class="order_address_information">{{item.addressInfo.address}}</view>
+                    </view>
+                </view>
                 <view wx:for="{{item.details}}" wx:key="bookId" class="order_item">
                     <!-- 订单图片和信息 -->
                     <view class="order_main2_row">
@@ -26,8 +26,14 @@
                         <view class="order_no_row">
                             <view class="order_name_text">书本名称:</view>
                             <view class="order_on_name">{{item.bookName}}</view>
+                            <!-- 状态栏右上角 -->
+                            <view class="order_on_status">已回收</view>
                         </view>
                     </view>
+                </view>
+                <!-- 还书 支付 按钮 -->
+                <view class="order_btn">
+                    <button class="order_btn_wrap" bindtap="" disabled="{{}}">还书</button>
                 </view>
             </view>
         </block>
