@@ -13,8 +13,8 @@
             <!-- 复选框 -->
             <view class="user_edit_row">
                 <view class="cart_chk_wrap">
-                    <checkbox-group data-id="{{}}" bindchange="">
-                        <checkbox checked="{{}}"></checkbox> 
+                    <checkbox-group data-id="{{item.id}}" bindchange="setAddressDefault">
+                        <checkbox value="{{item.id}}" checked="{{item.isDefault}}"></checkbox> 
                     </checkbox-group>
                     <view class="goods_moren">默认地址</view>
                 </view>

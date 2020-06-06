@@ -61,8 +61,31 @@ Page({
     }catch(error) {
       console.log(`delete address error:`, error);
     }
-    // 请求后台数据删除Num
-    
+  },
+
+  async setAddressDefault(e) {
+    console.log(e);
+    const selectAddressId = e.currentTarget.dataset.id;
+    const selectIds = e.detail.value;
+    if (selectIds.length) {
+      const id = +selectIds[0];
+      await request({ url: '/address/updateAddress', method: 'PUT',  data: { id: id, isDefault: true } }, true);
+      const addressList = this.data.addressList.map((address) => {
+        if (address.id === id) {
+          address.isDefault = 1;
+        }else{
+          address.isDefault = 0;
+        }
+        return address;
+      })
+      this.setData({
+        addressList: addressList
+      })
+    }else{
+      this.setData({
+        addressList: this.data.addressList
+      })
+    }
   },
 
 
