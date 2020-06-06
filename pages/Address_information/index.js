@@ -9,6 +9,7 @@ Page({
    */
   data: {
     addressInfo: {},
+    isEdit: false,
     disabled: true
   },
 
@@ -16,7 +17,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(`addressinfo onload.....`)
+    if (options.addressInfo) {
+      const address = JSON.parse(options.addressInfo);
+      this.setData({
+        addressInfo: address,
+        isEdit: true
+      })
+    }
+    
   },
 
   recordInput: function (e) {
@@ -67,7 +76,11 @@ Page({
       return;
     }
     try{
-      await request({ url: '/address', method: 'POST',  data: { receiver, phone, detail, postCode, area } }, true);
+      if (this.data.isEdit) {
+        await request({ url: '/address/updateAddress', method: 'PUT',  data: { id:this.data.addressInfo.id, receiver, phone, detail, postCode, area } }, true);
+      }else{
+        await request({ url: '/address', method: 'POST',  data: { receiver, phone, detail, postCode, area } }, true);
+      }
       wx.navigateBack({
         delta: 1
       })

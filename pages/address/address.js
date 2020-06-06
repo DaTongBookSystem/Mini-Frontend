@@ -1,5 +1,6 @@
 import { request } from '../../request/index.js';
 import regeneratorRuntime from '../../lib/runtime/runtime';
+import {filterResult} from '../../utils/helper';
 
 // pages/address/address.js
 Page({
@@ -36,6 +37,34 @@ Page({
       addressList: addressList
     })
   },
+
+  handleItemNumEdit(e) {
+    console.log(e);
+    // 跳转到address info 页面
+    const address = this.data.addressList[e.currentTarget.dataset.index];
+    console.log(address);
+    wx.navigateTo({
+      url: '/pages/Address_information/index?addressInfo=' + JSON.stringify(address),
+    })
+  },
+
+  async deleteItemNum(e) {
+    console.log(e)
+    const id = e.currentTarget.dataset.id;
+    try {
+      await request({url: '/address/' + id, method: 'DELETE'}, true)
+      // remove id 
+      const addressInfo = filterResult(this.data.addressList, {id})
+      this.setData({
+        addressList: addressInfo
+      })
+    }catch(error) {
+      console.log(`delete address error:`, error);
+    }
+    // 请求后台数据删除Num
+    
+  },
+
 
   /**
    * 生命周期函数--监听页面隐藏
