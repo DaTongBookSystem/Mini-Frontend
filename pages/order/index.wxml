@@ -15,25 +15,25 @@
                         <view class="order_address_information">{{item.addressInfo.detail}}</view>
                     </view>
                 </view>
-                <view wx:for="{{item.details}}" wx:key="bookId" class="order_item">
+                <view wx:for="{{item.details}}" wx:for-item="bookInfo" wx:key="bookId" class="order_item">
                     <!-- 订单图片和信息 -->
                     <view class="order_main2_row">
                         <!-- 订单图片 -->
                         <navigator class="order_img_wrap">
-                            <image mode="scaleToFill" src="{{item.bookSmallPic}}"></image>
+                            <image mode="scaleToFill" src="{{bookInfo.bookSmallPic}}"></image>
                         </navigator>
                         <!-- 订单信息 -->
                         <view class="order_no_row">
                             <view class="order_name_text">书本名称:</view>
-                            <view class="order_on_name">{{item.bookName}}</view>
+                            <view class="order_on_name">{{bookInfo.bookName}}</view>
                             <!-- 状态栏右上角 -->
-                            <view class="order_on_status">已回收</view>
+                            <view class="order_on_status" wx:if="{{item.status===0}}">已回收</view>
                         </view>
                     </view>
                 </view>
                 <!-- 还书 支付 按钮 -->
-                <view class="order_btn">
-                    <button class="order_btn_wrap" bindtap="" disabled="{{}}">还书</button>
+                <view class="order_btn" wx:if="{{status===3}}" >
+                    <button  class="order_btn_wrap" bindtap="" disabled="{{}}">还书</button>
                 </view>
             </view>
         </block>

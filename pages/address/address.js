@@ -55,6 +55,7 @@ Page({
 
   handleItemNumEdit(e) {
     console.log(e);
+    console.log(`edit ....`)
     // 跳转到address info 页面
     const address = this.data.addressList[e.currentTarget.dataset.index];
     console.log(address);

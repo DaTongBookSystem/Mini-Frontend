@@ -8,7 +8,12 @@
                     手机：<input placeholder="请输入手机号码" data-text="phone" bindinput="recordInput" value="{{addressInfo.phone}}"></input>
                 </view>
                 <view class="region_title">
-                    地区：<input placeholder="选择地区" data-text="area" bindinput="recordInput" value="{{addressInfo.area}}"></input>
+                    地区：
+                    <picker name="region" mode="region" bindchange="bindRegionChange" >
+                        <view class="picker">
+                            {{region.length > 0 ? region[0] + ' ' + region[1] + ' ' + region[2]  : '请选择'}}
+                        </view>
+                     </picker>
                 </view>
                 <view class="address_title">
                     地址：<input placeholder="请输入详细地址" data-text="detail" bindinput="recordInput" value="{{addressInfo.detail}}"></input>

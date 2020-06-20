@@ -10,7 +10,8 @@ Page({
   data: {
     addressInfo: {},
     isEdit: false,
-    disabled: true
+    disabled: true,
+    region: [],
   },
 
   /**
@@ -88,7 +89,13 @@ Page({
       console.log(`create address error`, error)
     }
     
-  }
+  },
+  bindRegionChange(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  },
 
   
 })

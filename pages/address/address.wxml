@@ -19,9 +19,9 @@
                     <view class="goods_moren">默认地址</view>
                 </view>
                 <view class="user_main2">
-                    <view bindtap="handleItemNumEdit" data-index="{{index}}" data-operation="" class="num_edit">编辑</view> 
+                    <view catchtap="handleItemNumEdit" data-index="{{index}}" data-operation="" class="num_edit" hover-stop-propagation="true">编辑</view> 
                     <view>丨</view>
-                    <view bindtap="deleteItemNum" data-id="{{item.id}}" data-operation="" class="num_edit">删除</view>
+                    <view catchtap="deleteItemNum" data-id="{{item.id}}" data-operation="" class="num_edit" hover-stop-propagation="true">删除</view>
                 </view>        
             </view>
         </view>

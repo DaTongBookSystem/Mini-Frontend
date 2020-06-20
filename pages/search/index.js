@@ -45,7 +45,7 @@ Page({
   },
   // 发送请求获取搜索建议的数据
   async qsearch(query){
-    const res=await request({url:"/goods/qsearch",data:{query}});
+    const res=await request({url:`/book/searchBook/${query}`, method: 'GET'});
     console.log(res);
     this.setData({
       goods:res

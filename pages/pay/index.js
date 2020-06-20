@@ -85,7 +85,7 @@ Page({
       // 导航到地址列表
       console.log(`go to address info pahe`)
       wx.navigateTo({
-        url: '/pages/addressInfo/index?comeFromOrderPage=true',
+        url: '/pages/address/address?comeFromOrderPage=true',
       })
     } catch (error) {
       console.log(error);
@@ -99,13 +99,13 @@ Page({
     console.log(`data: userinfo`, data);
     if (!this.data.address.receiver) {
       this.setData({
-        trafficTicketCount: data.userInfo.trafficTicketCount,
+        trafficTicketCount: data.trafficTicketCount,
         address: data.defaultAddress || {}
       })
       return;
     }
     this.setData({
-      trafficTicketCount: data.userInfo.trafficTicketCount,
+      trafficTicketCount: data.trafficTicketCount,
     })
   },
 

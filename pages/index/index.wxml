@@ -43,7 +43,7 @@
     <navigator
     wx:for="{{catesList}}"
     wx:key="name"
-    url="/pages/freight/freight"
+    url="{{item.linkTo}}"
     open-type="navigate"
     >
     <image src="{{item.imgUrl}}" mode="widthFix" >

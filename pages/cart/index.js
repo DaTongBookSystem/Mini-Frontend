@@ -171,6 +171,7 @@ Page({
     })
     // 判断数组是否为空
     allChecked = cart.length != 0 ? allChecked : false;
+    totalPrice = Math.floor(totalPrice * 100) / 100
     this.setData({
       cart,
       totalPrice,
