@@ -3,25 +3,34 @@ page {
 }
 .address_wrap {
   background-color: #fff;
+  font-size: 40rpx;
 }
 .address_wrap .name_title {
+  display: flex;
   padding: 30rpx;
+  border-bottom: 1px solid #ccc;
 }
 .address_wrap .phone_title {
+  display: flex;
   padding: 30rpx;
+  border-bottom: 1px solid #ccc;
 }
 .address_wrap .region_title {
+  display: flex;
   padding: 30rpx;
+  border-bottom: 1px solid #ccc;
 }
 .address_wrap .address_title {
+  display: flex;
   padding: 30rpx;
+  border-bottom: 1px solid #ccc;
 }
 .address_wrap .code_title {
+  display: flex;
   padding: 30rpx;
 }
 .address_wrap input {
-  height: 100%;
-  padding: 30rpx;
+  margin-top: 8rpx;
 }
 .footer_tool {
   position: fixed;

@@ -1,4 +1,34 @@
-button{
-    margin-top: 40rpx;
-    width: 70%;
+.login {
+  margin-top: 40rpx;
+  width: 70%;
+}
+.phoneMain {
+  margin-top: 100rpx;
+  padding: 40rpx;
+}
+.phoneMain .phoneNum {
+  padding: 20rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10px;
+}
+.phoneMain .phoneCaptchaNum {
+  display: flex;
+  margin-top: 40rpx;
+}
+.phoneMain .phoneCaptchaNum .phoneCaptcha {
+  flex: 3;
+  padding: 20rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10px;
+}
+.phoneMain .phoneCaptchaNum .phoneCaptchaButton {
+  flex: 1;
+  border: 1rpx solid #ccc;
+  border-radius: 10px;
+  padding: 20rpx;
+  font-size: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx;
 }
