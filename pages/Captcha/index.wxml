@@ -1,0 +1,12 @@
+<!-- 手机号验证码登录 -->
+<view class="phoneMain">
+    <view class="phoneNum">
+    <input  placeholder="请输入您的手机号" bindinput="handleInput"></input>
+    </view>
+
+    <!-- 获取验证码 -->
+    <view class="phoneCaptchaNum">
+    <input class="phoneCaptcha"placeholder="请输入您的验证码" bindinput="handleInput"></input>
+    <button class="phoneCaptchaButton" >获取验证码</button>
+    </view>
+</view>

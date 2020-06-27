@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
@@ -22,7 +22,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -175,6 +175,20 @@
 					"id": -1,
 					"name": "收获地址管理",
 					"pathName": "pages/Address_information/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 17,
+					"name": "约书页面",
+					"pathName": "pages/Appointment/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "手机号绑定",
+					"pathName": "pages/Captcha/index",
 					"query": "",
 					"scene": null
 				}

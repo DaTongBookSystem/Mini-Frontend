@@ -1,0 +1,31 @@
+.AppointmentMain {
+  margin-top: 200rpx;
+  padding: 40rpx;
+}
+.AppointmentMain .AppointmentName {
+  padding: 20rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10px;
+}
+.AppointmentMain .AppointmentAuthor {
+  padding: 20rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10px;
+  margin-top: 30rpx;
+}
+.AppointmentMain .AppointmentPublishingHouse {
+  padding: 20rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10px;
+  margin-top: 30rpx;
+}
+.AppointmentButton {
+  border: 1rpx solid #ccc;
+  border-radius: 10px;
+  padding: 20rpx;
+  font-size: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200rpx;
+}

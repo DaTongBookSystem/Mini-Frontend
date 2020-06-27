@@ -1,0 +1,19 @@
+<!-- 约书 -->
+<view class="AppointmentMain">
+    <!-- 书名 -->
+    <view class="AppointmentName">
+    <input  placeholder="请输入书名，我们会为您尽快准备书本" bindinput="handleInput"></input>
+    </view>
+
+    <!-- 作者 -->
+    <view class="AppointmentAuthor">
+    <input placeholder="请输入作者" bindinput="handleInput"></input>
+    </view>
+
+    <!-- 出版社 -->
+    <view class="AppointmentPublishingHouse">
+    <input placeholder="请输入出版社" bindinput="handleInput"></input>
+    </view>
+
+    <button class="AppointmentButton" >立即提交</button>
+</view>

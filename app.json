@@ -17,7 +17,9 @@
     "pages/address/address",
     "pages/freight/freight",
     "pages/vip/index",
-    "pages/Address_information/index"
+    "pages/Address_information/index",
+    "pages/Appointment/index",
+    "pages/Captcha/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
