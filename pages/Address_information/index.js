@@ -23,7 +23,8 @@ Page({
       const address = JSON.parse(options.addressInfo);
       this.setData({
         addressInfo: address,
-        isEdit: true
+        isEdit: true,
+        region: [address.province, address.city, address.area]
       })
     }
     
@@ -54,8 +55,14 @@ Page({
         break;
 
     }
+    
+    this.setSaveButtonStatus()
+  },
+
+  setSaveButtonStatus: function () {
     const { receiver, phone, detail, postCode } = this.data.addressInfo;
-    if (receiver && phone && detail && postCode) {
+    const region = this.data.region;
+    if (receiver && phone && detail && postCode && region.length > 1) {
       this.setData({
         addressInfo: this.data.addressInfo,
         disabled: false
@@ -66,21 +73,21 @@ Page({
         disabled: true
       })
     }
-    
   },
 
   async submitAddressInfo() {
     console.log(this);
 
     const { receiver, phone, detail, postCode, area } = this.data.addressInfo;
-    if (!receiver || !phone || !detail || !postCode || !area) {
+    const region = this.data.region;
+    if (!receiver || !phone || !detail || !postCode || (region.length < 1)) {
       return;
     }
     try{
       if (this.data.isEdit) {
-        await request({ url: '/address/updateAddress', method: 'PUT',  data: { id:this.data.addressInfo.id, receiver, phone, detail, postCode, area } }, true);
+        await request({ url: '/address/updateAddress', method: 'PUT',  data: { id:this.data.addressInfo.id, receiver, phone, detail, postCode, province: region[0], city: region[1], area: region[2] } }, true);
       }else{
-        await request({ url: '/address', method: 'POST',  data: { receiver, phone, detail, postCode, area } }, true);
+        await request({ url: '/address', method: 'POST',  data: { receiver, phone, detail, postCode, province: region[0], city: region[1], area: region[2] } }, true);
       }
       wx.navigateBack({
         delta: 1
@@ -95,6 +102,7 @@ Page({
     this.setData({
       region: e.detail.value
     })
+    this.setSaveButtonStatus()
   },
 
   

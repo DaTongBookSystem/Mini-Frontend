@@ -1,3 +1,7 @@
+import regeneratorRuntime, { async } from '../../lib/runtime/runtime';
+import { request } from "../../request/index.js";
+import {showToast} from '../../utils/asyncWx';
+
 // pages/Captcha/index.js
 Page({
 
@@ -5,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    phone: '',
+    code: ''
   },
 
   /**
@@ -62,5 +67,40 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handleInput: function(e) {
+    console.log(e)
+    const type = e.target.dataset.text || 'phone';
+    const value = e.detail.value;
+    switch (type) {
+      case 'phone':
+        this.data.phone = value
+        break;
+      case 'code':
+        this.data.code = value
+        break;
+      default:
+        break;
+
+    }
+  },
+  async getSmsCode() {
+    const result = await request({url: '/user/sendSmsCode', data: {
+      phone: this.data.phone
+    }, method: 'POST'}, true)
+    console.log(result)
+  },
+  async authenticate() {
+    const {phone, code} = this.data;
+    if (phone && code) {
+      const res = await request({url: '/user/updateUser',data: {
+        phone: this.data.phone
+      }, method:'POST'}, true)
+      if (res === 'success') {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    }
   }
 })

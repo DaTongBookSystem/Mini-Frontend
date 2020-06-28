@@ -4,7 +4,7 @@ let ajaxTime = 0;
 
 // const baseUrl = 'http://localhost:8002';
 const baseUrl = 'https://test.zmcm.vip';
-
+// 
 
 export const request = (params, tokenNeeded = true) => {
   ajaxTime++;
@@ -28,6 +28,7 @@ export const request = (params, tokenNeeded = true) => {
       success: (result) => {
         const data = result.data;
         if (data.msg === 'invalid token。' && data.code === 401) {
+          console.log(`invalid token`, ajaxTime);
           const userInfo = wx.getStorageSync('userinfo');
           getNewToken().then(() => {
             request(params, tokenNeeded).then((result) => {
@@ -46,10 +47,10 @@ export const request = (params, tokenNeeded = true) => {
       },
       complete: () => {
         ajaxTime--;
-        if (ajaxTime === 0) {
+        // if (ajaxTime === 0) {
           // 关闭正在等待的图标
           wx.hideLoading()
-        }
+        // }
       }
     });
   })

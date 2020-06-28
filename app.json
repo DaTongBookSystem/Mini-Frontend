@@ -19,7 +19,8 @@
     "pages/vip/index",
     "pages/Address_information/index",
     "pages/Appointment/index",
-    "pages/Captcha/index"
+    "pages/Captcha/index",
+    "pages/contact/contact"
   ],
   "window": {
     "backgroundTextStyle": "light",

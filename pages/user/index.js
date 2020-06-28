@@ -3,11 +3,11 @@ import regeneratorRuntime from "../../lib/runtime/runtime";
 import { request } from "../../request/index.js";
 Page({
   data: {
-    userinfo:{},
+    userinfo: {},
     // 被收藏的商品的数量
-    collectNums:0
+    collectNums: 0,
   },
-  async onShow(){
+  async onShow() {
     // const userinfo=wx.getStorageSync("userinfo");
     await this.getUserInfo();
   },
@@ -18,6 +18,10 @@ Page({
     this.setData({
       userinfo: userinfo
     })
-  }
-
-})
+    if (!userinfo.phone) {
+      wx.navigateTo({
+        url: '/pages/Captcha/index',
+      })
+    }
+  },
+});
